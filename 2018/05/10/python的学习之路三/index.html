@@ -1,0 +1,931 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="python的学习之路三, wh1te">
+    <meta name="description" content="On the learning of Python
+
+python在第一篇的时候，我就提过，python真正厉害的地方在于它的库，pytohn的库十分的多，库里各式各样的函数为我们提供了很多的方便。当你学会了python的基础语法，剩下来的">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>python的学习之路三 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        python的学习之路三
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/python/" target="_blank">
+                    <span class="chip bg-color">python</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Learning-notes/" class="post-category" target="_blank">
+                        Learning notes
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-05-10
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>On the learning of Python</p>
+<a id="more"></a>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>在第一篇的时候，我就提过，python真正厉害的地方在于它的库，pytohn的库十分的多，库里各式各样的函数为我们提供了很多的方便。当你学会了python的基础语法，剩下来的就是你要去了解你所需要用到的那些库。其实库，就是python里面的模块。</p>
+<h4 id="0x01-库-模块"><a href="#0x01-库-模块" class="headerlink" title="0x01 库/模块"></a>0x01 库/模块</h4><p>什么是模块(库)？模块是更高级的封装，模块其实就是程序，把程序封装起来，需要用到了就拿出来，那句话怎么说？多快好省~</p>
+<pre><code class="python">import 模块名
+from 模块名 import 函数名
+import 模块吗 as 新名字</code></pre>
+<h4 id="0x02-常用模块"><a href="#0x02-常用模块" class="headerlink" title="0x02 常用模块"></a>0x02 常用模块</h4><p>1.网络请求库(HTTP请求)：</p>
+<pre><code class="python">requests
+urllib
+urllib2
+httplib</code></pre>
+<p>其实我记得好多，但是想不起来了。</p>
+<p>下面的爬虫都是基于python3.x，但是python2.x也可以用，只不过来回切换版本的时候容易出现因为版本差异的报错，比较恶心的。</p>
+<p>这里以requests库为例(其实也是我第一个爬虫)：</p>
+<pre><code class="python">#在写爬虫之前，要仔细的阅读要爬取页面的代码以及标签对，找到所需的，再在自己的程序里面定义，然后再对照源代码写程序
+
+import requests
+import time
+import bs4
+#导入了三个模块
+
+#定义了一个获取页面html内容的函数
+def get_html(url):
+    try:#检查下面的代码段是否有错误，如果有执行except后面的语句
+        r = requests.get(url, timeout = 30)
+        #如果网页的状态码不是200，就会抛出异常
+        r.raise_for_status()
+        #r.encoding = r.apparent_encoding
+        r.encoding = &#39;utf-8&#39;#设置了跟抓取页面相同的字符集
+        return r.text #返回一个文本文档
+    except:
+        return &quot;ERROR&quot;
+
+#定义了一个获取内容的函数
+def get_content(url):
+    comments = []   
+    html = get_html(url) #用html接受了get_html(url)传过来的一个文本文档
+
+    soup = bs4.BeautifulSoup(html, &#39;lxml&#39;) #以lxml的格式将html赋给soup
+
+    #在这里用find_all查找出所有class标签等于指定值的li标签对，并赋值给liTags
+    liTags = soup.find_all(&#39;li&#39;, attrs={&#39;class&#39;:&#39; j_thread_list clearfix&#39;})
+
+    #使用for循环，遍历出来liTags里面的内容，并重新定义一个comment字典用来接受数据
+    for li in liTags:
+        comment = {}
+        try:#检测函数的try，跟上面的try用法一样
+
+            #给comment里的键值对赋值，strip 同时去掉左右两边的空格，lstrip 去掉左边的空格，rstrip 去掉右边的空格。赋值的内容，经过find的查找以及筛选
+            comment[&#39;title&#39;] = li.find(&#39;a&#39;, attrs = {&#39;class&#39;: &#39;j_th_tit&#39;}).text.strip()
+            #效果同上，只不过在值前加上了一个固定的字符串内容，+ 在这里表示连接符
+            comment[&#39;link&#39;] = &quot;http://tieba.baidu.com&quot; + li.find(&#39;a&#39;, attrs={&#39;class&#39;: &#39;j_th_tit&#39;})[&#39;href&#39;]
+            comment[&#39;name&#39;] = li.find(&#39;span&#39;, attrs={&#39;class&#39;: &#39;tb_icon_author &#39;}).text.strip()
+            comment[&#39;time&#39;] = li.find(&#39;span&#39;, attrs={&#39;class&#39;: &#39;pull-right is_show_create_time&#39;}).text.strip()
+            comment[&#39;replyNum&#39;] = li.find(&#39;span&#39;, attrs={&#39;class&#39;: &#39;threadlist_rep_num center_text&#39;}).text.strip()
+            #把comment字典里的内容，添加到comments这个列表里
+            comments.append(comment)
+        except:
+            print(&quot;出了点小问题&quot;)
+    #返回comments这个列表
+    return comments
+
+#定义一个写入文件的函数，传入的参数是一个字典
+def Out2File(dict):
+    #会单独的解释这个with语句，他就是打开一个文件，模式可选，然后再关闭。a 以写入模式打开，如果文件存在，则在末尾追加写入。+ 可读写模式（可添加到其他模式中使用）
+    with open(&#39;C://Users//10617//Desktop//TTBT.txt&#39;, &#39;a+&#39;) as f:
+
+        #以for循环的方式打开dict
+        for comment in dict:
+            #f.write是将括号里的内容，写入文件，后面.format()，一一对应前面的{}
+            f.write(&#39;标题: {} \t 链接: {} \t 发帖人: {} \t 发帖时间: {} \t 回复数量: {} \n&#39;
+                    .format(comment[&#39;title&#39;],comment[&#39;link&#39;], comment[&#39;name&#39;],comment[&#39;time&#39;],comment[&#39;replyNum&#39;]))
+            print(&quot;当前页面爬去成功&quot;)
+#定义一个基础函数，用来接受url以及要爬取的页数
+def main(base_url, deep):
+    url_list = []#定义了一个url列表
+    for i in range(0, deep):#使用for循环，把url逐个添加到url_list中
+        url_list.append(base_url + &#39;&amp;pn=&#39; + str(50 * i))
+    print(&#39;所有的网页已经下载到本地！ 开始筛选信息。。。。&#39;)
+
+    #使用for循环把所有的url从url_list中遍历出来
+    for url in url_list:
+        #调用之前定义的get_comment()去获取页面内容，并赋值给content
+        content = get_content(url)
+        #把content作为参数传入Out2File()函数中，写入文本
+        Out2File(content)
+    print(&#39;所有的信息都已经保存完毕！&#39;)
+#base_url是定义好的url
+base_url = &#39;http://tieba.baidu.com/f?ie=utf-8&amp;kw=%E7%94%9F%E6%B4%BB%E5%A4%A7%E7%88%86%E7%82%B8&amp;fr=search&amp;red_tag=z0551200317&#39;
+#指定好要爬取的页数，不然太多会爬好久
+deep = 3
+#这里是重点。百度上说，当别的module(其实就是模块，这么说比较装13而已)引入的时候，__name__就是你的module名字，而不是__main__。其实我也不是很懂，碰到了再说。只需要知道，这样当你运行这段代码的时候，这整个流程就开始执行了。
+if __name__ == &#39;__main__&#39;:
+    #调用main函数，并传入所需参数
+    main(base_url, deep)</code></pre>
+<p>这个脚本我当时写的时候，还是一脸懵逼的，索性就直接每句都加上了注释，也方便自己之后的仿写。</p>
+<p>再放上一个稍微简单些的：</p>
+<pre><code class="python">import requests
+r = requests.get(&quot;http://top.baidu.com/?fyb=PcReDianAla01&quot;, timeout=30)
+r.raise_for_status()
+r.encoding = &#39;utf-8&#39;
+print(r.text)</code></pre>
+<p>这样，就可以获取到那个页面的源代码了。</p>
+<p>这里requests库用的比较多，就简单的说下requests库。<br>Request是一个简答优雅的python HTTP库，相较于python标准库中的urllib和urllib2的库，Requests更加的便于理解使用，在python官网还可以看到一段十分有趣的话：</p>
+<pre><code class="python">警告：非专业使用其他 HTTP 库会导致危险的副作用，包括：安全缺陷症、冗余代码症、重新发明轮子症、啃文档症、抑郁、头疼、甚至死亡。</code></pre>
+<p>虽然比较扯淡，但是还是足以看出requests库的方便之处。</p>
+<p>安装：</p>
+<pre><code class="python">pip install requests
+python -m pip install requests
+python3 -m pip install requests
+其实只要第一行就可以了，但是我的电脑是py2和py3共存的，所以会有后面的两条命令的。
+</code></pre>
+<p>request库：<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>requests 库的七个常用方法：</p>
+<pre><code>import requests
+requests.request() 构造一个请求，支撑以下各方法的基础方法
+requests.get() 获取HTML网页的主要方法，对应HTTP的GET
+requests.head() 获取HTML网页头信息的方法，对应HTTP的HEAD
+requests.post() 向HTML网页提交post请求的方法，对应HTTP的POST
+requests.put() 向HTML网页提交put请求的方法，对应HTTP的PUT
+requests.patch() 向HTML网页提交局部修改请求，对应HTTP的PATCH
+requests.delete() 向HTML网页提交删除请求，对应HTTP的DELETE
+
+
+requests.get()
+    #这个方法可以接收三个参数，其中第二个默认为None 第三个可选
+    def get(url, params=None, **kwargs)
+    #作用是模拟发起GET请求
+    Sends a GET request.
+    #模拟获取页面的url链接
+    :param url: URL for the new :class:Request object. 
+    #额外参数 字典或字节流格式，可选
+    :param params: (optional) Dictionary or bytes to be sent in the query string for the :class:Request. 
+    # 十二个控制访问参数，比如可以自定义header
+    :param **kwargs: Optional arguments that request takes. 
+    # 返回一个Response对象
+    :return: :class:Response &lt;Response&gt; object 
+    :type: requests.Response
+
+    **kwargs：
+        kwargs: 控制访问的参数，均为可选项
+
+        params : 字典或字节序列，作为参数增加到url中
+
+        data : 字典、字节序列或文件对象，作为Request的内容 json : JSON格式的数据，作为Request的内容
+
+        headers : 字典，HTTP定制头
+
+        cookies : 字典或CookieJar，Request中的cookie
+
+        auth : 元组，支持HTTP认证功能
+
+        files : 字典类型，传输文件
+
+        timeout : 设定超时时间，秒为单位   
+
+        \proxies : 字典类型，设定访问代理服务器，可以增加登录认证
+
+        allow_redirects : True/False，默认为True，重定向开关
+
+        stream : True/False，默认为True，获取内容立即下载开关
+
+        verify : True/False，默认为True，认证SSL证书开关
+
+        cert : 本地SSL证书路径
+
+        url: 拟更新页面的url链接
+
+        data: 字典、字节序列或文件，Request的内容
+
+        json: JSON格式的数据，Request的内容
+        实例：
+            import requests
+
+            hd = {&#39;User-agent&#39;:&#39;123&#39;}
+            r = requests.get(&#39;http://www.baidu.com&#39;, headers=hd)
+            print(r.request.headers)
+
+            &#39;&#39;&#39;
+            OUT:
+            {&#39;User-agent&#39;: &#39;123&#39;, &#39;Accept-Encoding&#39;: &#39;gzip, deflate&#39;, &#39;Accept&#39;: &#39;*/*&#39;, &#39;Connection&#39;: &#39;keep-alive
+            &#39;}
+            &#39;&#39;&#39;.
+
+            import requests
+            pxs = { &#39;http&#39;: &#39;http://user:pass@10.10.10.1:1234&#39;,
+                    &#39;https&#39;: &#39;https://10.10.10.1:4321&#39; }#在访问时，设置一个代理服务器，通过代理服务器去访问。
+            r = requests.get(&#39;http://www.baidu.com&#39;, proxies=pxs)
+            print(r.requests)
+
+
+
+                            import requests
+            r = requests.get(&quot;http://www.baidu.com&quot;)
+
+            &#39;&#39;&#39;
+            Response(self)
+
+            The :class:Response &lt;Response&gt; object, which contains a server&#39;s response to an HTTP request.
+
+            &#39;&#39;&#39;
+            #HTTP请求的返回状态，比如，200表示成功，404表示失败
+            print (r.status_code)
+            #HTTP请求中的headers
+            print (r.headers)
+            #从header中猜测的响应的内容编码方式 
+            print (r.encoding)
+            #从内容中分析的编码方式（慢）
+            print (r.apparent_encoding)
+            #响应内容的二进制形式
+            print (r.content)
+
+            实战:
+                def getHtmlText(url):
+                    try:
+                        r = requests.get(url, timeout=30)
+                        # 如果状态码不是200 则应发HTTOError异常
+                        r.raise_for_status()
+                        # 设置正确的编码方式
+                        r.encoding = r.apparent_encoding
+                        return r.text
+                    except:
+                        return &quot;Something Wrong!</code></pre><p>关于requests库，由于我不要经常写一些脚本，所以说的比较详细，回头不忙了，补上python-web的东西~</p>
+<p>其实感觉这次写的没有什么头绪，因为最近实在是太忙了，所以也没来得及搞。感觉，我应该先介绍requests的库，再放上脚本的。</p>
+<p>如果对你有帮助，记得打赏哦~</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/05/10/python的学习之路三/" class="b-link-green">python的学习之路三</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/05/10/常见端口连接以及nc的使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="常见端口连接以及nc的使用">
+                        
+                        <span class="card-title">常见端口连接以及nc的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About Port Connections
+
+关于端口连接方式
+0x00 前言随手记以下常见端口的连接方式，加强记忆。主要有ssh，mysql，telnet，ftp。以及nc瑞士军刀的使用。
+0x01 SSHssh作为远程连接命令还是比较</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/WEB/" target="_blank">
+                        <span class="chip bg-color">WEB</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/05/10/sqlmap的使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Sqlmap">
+                        
+                        <span class="card-title">Sqlmap</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About Sqlmap
+
+About Sqlmap Security
+0x01 前言关于sqlmap，其实早就想写下总结个这哥是我接触安全认识的第一个神器，非常之叼。sqlmap是十分著名的自动化的SQL注入工具，他是开源的，由pytho</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

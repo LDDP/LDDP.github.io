@@ -1,0 +1,776 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="WEB安全-常见源码泄露, wh1te">
+    <meta name="description" content="About WEB Security
+
+About WEB Security
+0x0 前言关于WEB安全，这两天做题碰到了.git源码泄露的问题，刚好自己又记得不牢，所以写了个笔记，记录下关于常见的源码泄露。
+0x1 .git源码泄露当在一">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>WEB安全-常见源码泄露 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        WEB安全-常见源码泄露
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/Note/" target="_blank">
+                    <span class="chip bg-color">Note</span>
+                </a>
+                
+                <a href="/tags/WEB/" target="_blank">
+                    <span class="chip bg-color">WEB</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Skill/" class="post-category" target="_blank">
+                        Skill
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-05-10
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>About WEB Security</p>
+<a id="more"></a>
+<h2 id="About-WEB-Security"><a href="#About-WEB-Security" class="headerlink" title="About WEB Security"></a>About WEB Security</h2><hr>
+<h4 id="0x0-前言"><a href="#0x0-前言" class="headerlink" title="0x0 前言"></a>0x0 前言</h4><p>关于WEB安全，这两天做题碰到了.git源码泄露的问题，刚好自己又记得不牢，所以写了个笔记，记录下关于常见的源码泄露。</p>
+<h4 id="0x1-git源码泄露"><a href="#0x1-git源码泄露" class="headerlink" title="0x1 .git源码泄露"></a>0x1 .git源码泄露</h4><p>当在一个空目录执行 git init 时，Git 会创建一个 .git 目录。 这个目录包含所有的 Git 存储和操作的对象。 如果想备份或复制一个版本库，只需把这个目录拷贝至另一处就可以了</p>
+<p>比如某个网站存在.git文件泄露，可以：</p>
+<pre><code class="bash">http://www.baidu.com/.git</code></pre>
+<p>利用方式：<br>github上的githack可以把整个.git备份的文件下载下来。它能解析 .git/index 文件，并找到工程中所有的：文件名和文件 sha1，然后去 .git/objects/ 文件夹下下载对应的文件，通过 zlib 解压文件，按原始的目录结构写入源代码</p>
+<p><a href="https://github.com/lijiejie/GitHack" target="_blank" rel="noopener">工具</a></p>
+<h4 id="0x2-svn源码泄露"><a href="#0x2-svn源码泄露" class="headerlink" title="0x2 .svn源码泄露"></a>0x2 .svn源码泄露</h4><p>SVN 是 Subversion 的简称，是一个开放源代码的版本控制系统，相较于 RCS、CVS，它采用了分支管理系统，它的设计目标就是取代 CVS。互联网上很多版本控制服务已从 CVS 迁移到 Subversion。</p>
+<p>很多网站都使用了 svn 版本控制系统，和使用 git 版本控制器类似，很多开发者网站安全意识不足，代码放到生产坏境中后，没有清理 svn 的一些信息，导致 svn 残留，因此攻击者可以使用工具 dvcs-ripper 下载网站源码。</p>
+<p>当可以访问到/.svn/entries的时候，就证明存在了。</p>
+<p>比如乌云曾经爆出的某个网站：</p>
+<pre><code class="bash">http://data.5i5j.com/sitemetrics/.svn/entries</code></pre>
+<p><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">工具</a><br>利用命令：</p>
+<pre><code class="bash">rip-svn.pl -v -u http://www.localhost.test/.svn/</code></pre>
+<p>当然还有更简单的，seay-svn<br><a href="https://pan.baidu.com/s/1mrNpB" target="_blank" rel="noopener">工具</a></p>
+<h4 id="0x3-DS-Store-文件泄露"><a href="#0x3-DS-Store-文件泄露" class="headerlink" title="0x3 DS_Store 文件泄露"></a>0x3 DS_Store 文件泄露</h4><p>.DS_Store 文件 MAC 系统是用来存储这个文件夹的显示属性的：比如文件图标的摆放位置。如果用户删除以后的副作用就是这些信息的失去。</p>
+<p>这些文件本来是给 Finder 使用的，但它们被设想作为一种更通用的有关显示设置的元数据存储，诸如图标位置和视图设置。 当你需要把代码上传的时候，安全正确的操作应该把 .DS_Store 文件删除才正确。通过.DS_Store可以知道这个目录里所有的文件名称。 </p>
+<p>当访问/.ds_store可以访问的到，就证明存在。例如：</p>
+<pre><code class="bash">http://www.baidu.com/.ds_store</code></pre>
+<p><a href="https://github.com/lijiejie/ds_store_exp" target="_blank" rel="noopener">工具</a><br>使用方式：</p>
+<pre><code class="bash">python ds_store_exp.py http://www.example.com/.DS_Store</code></pre>
+<h4 id="0x4-hg-源码泄露"><a href="#0x4-hg-源码泄露" class="headerlink" title="0x4 .hg 源码泄露"></a>0x4 .hg 源码泄露</h4><p>使用hg init 新建仓库的时候，会生成一个备份文件.hg，当访问/.hg存在的时候，就证明存在该漏洞。例如：</p>
+<pre><code class="bash">http://www.baidu.com/.hg/</code></pre>
+<p><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">工具</a><br>使用方式：</p>
+<pre><code class="bash">rip-hg.pl -v -u http://www.example.com/.hg/</code></pre>
+<h4 id="0x5-常见编辑器备份文件泄露"><a href="#0x5-常见编辑器备份文件泄露" class="headerlink" title="0x5 常见编辑器备份文件泄露"></a>0x5 常见编辑器备份文件泄露</h4><p>   http://[ip]/.test.php.swp<br>   http://[ip]/test.php.bak<br>   http://[ip]/test.jsp.old<br>   http://[ip]/cgi~   
+   http://[ip]/index.php~
+如果存在这些问题，可以直接下载文件，查看文件内容。</p>
+<h4 id="0x6-WEB-INF-web-xml泄露"><a href="#0x6-WEB-INF-web-xml泄露" class="headerlink" title="0x6 WEB-INF/web.xml泄露"></a>0x6 WEB-INF/web.xml泄露</h4><p>WEB-INF 是 Java 的 WEB 应用的安全目录。该目录原则上来说是客户端无法访问，只有服务端才可以可以访问。如果想在页面中直接访问其中的文件，必须通过 web.xml 文件对要访问的文件进行相应映射才能访问。</p>
+<p>WEB-INF 主要包含一下文件或目录：</p>
+<ol>
+<li><p>/WEB-INF/web.xml：Web 应用程序配置文件，描述了 servlet 和其他的应用组件配置及命名规则；</p>
+</li>
+<li><p>/WEB-INF/classes/：含了站点所有用的 class 文件，包括 servlet class 和非 servlet class，他们不能包含在 .jar 文件中；</p>
+</li>
+<li><p>/WEB-INF/lib/：存放 web 应用需要的各种 JAR 文件，放置仅在这个应用中要求使用的 jar 文件 , 如数据库驱动 jar 文件；</p>
+</li>
+<li><p>/WEB-INF/src/：源码目录，按照包名结构放置各个 java 文件；</p>
+</li>
+<li><p>/WEB-INF/database.properties：数据库配置文件。</p>
+</li>
+</ol>
+<p>不过在一些特定的场合却会让攻击者能读取到其中的内容，从而造成源码泄露.</p>
+<p>访问：</p>
+<pre><code class="bash">http://www.baidu.com/WEB-IBF/web.xml</code></pre>
+<p>目录存在的位置是不固定的，要从实际情况出发，在进行渗透测试的时候，我曾经就碰到过。</p>
+<h4 id="0x7-网站备份文件泄露"><a href="#0x7-网站备份文件泄露" class="headerlink" title="0x7 网站备份文件泄露"></a>0x7 网站备份文件泄露</h4><p>在网站的升级和维护过程中，通常需要对网站中的文件进行修改。此时就需要对网站整站或者其中某一页面进行备份。</p>
+<p>当备份文件或者修改过程中的缓存文件因为各种原因而被留在网站 web 目录下，而该目录又没有设置访问权限时，便有可能导致备份文件或者编辑器的缓存文件被下载，导致敏感信息泄露，给服务器的安全埋下隐患。</p>
+<p>该漏洞的成因主要有是管理员将备份文件放在到 web 服务器可以访问的目录下。</p>
+<p>该漏洞往往会导致服务器整站源代码或者部分页面的源代码被下载，利用。源代码中所包含的各类敏感信息，如服务器数据库连接信息，服务器配置信息等会因此而泄露，造成巨大的损失。</p>
+<p>被泄露的源代码还可能会被用于代码审计，进一步利用而对整个系统的安全埋下隐患。</p>
+<p>文件后缀：</p>
+<pre><code class="bash">.rar   .zip  .7z   .tar.gz   .bak    .swp   .txt   .sql</code></pre>
+<p>比如：</p>
+<pre><code class="bash">http://wm123.baidu.com/wm123.tar.gz</code></pre>
+<p>通过扫描网站的目录，可以发现这些敏感的备份文件，由于浏览器不能直接解析这些文件后缀，导致可以直接下载，查看网站的源码。</p>
+<h4 id="0x8-cvs文件泄露"><a href="#0x8-cvs文件泄露" class="headerlink" title="0x8 cvs文件泄露"></a>0x8 cvs文件泄露</h4><p>这个，没碰到过。<br>例如：</p>
+<pre><code class="bash">http://url/CVS/Root 返回根信息
+http://url/CVS/Entries 返回所有文件的结构</code></pre>
+<p>取回源码的命令：</p>
+<pre><code class="bash">bk clone http://url/name dir</code></pre>
+<p>这个命令的意思就是把远端一个名为name的repo clone到本地名为dir的目录下。<br><a href="https://github.com/bitkeeper-scm/bitkeeper" target="_blank" rel="noopener">工具</a></p>
+<h4 id="Bazaar-bzr"><a href="#Bazaar-bzr" class="headerlink" title="Bazaar/bzr"></a>Bazaar/bzr</h4><p>这个也没见过，暂时做记录。<br><a href="https://github.com/kost/dvcs-ripper" target="_blank" rel="noopener">工具</a><br>使用命令：</p>
+<pre><code class="bash">rip-bzr.pl -v -u http://www.example.com/.bzr/</code></pre>
+<p>这个工具比较叼，上面的.git，.svn都可以利用。</p>
+<h4 id="信息搜集工具"><a href="#信息搜集工具" class="headerlink" title="信息搜集工具"></a>信息搜集工具</h4><p><a href="https://github.com/ring04h/weakfilescan" target="_blank" rel="noopener">weakfilescan</a></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><h2 id="敏感信息-文件-源码泄露种类有很多种，这里只是简单的做个总结，常见的，至于实际应用还是要结合实际情况（CTF比赛里面也经常看到这样的利用方式）。一步步积累。"><a href="#敏感信息-文件-源码泄露种类有很多种，这里只是简单的做个总结，常见的，至于实际应用还是要结合实际情况（CTF比赛里面也经常看到这样的利用方式）。一步步积累。" class="headerlink" title="敏感信息/文件/源码泄露种类有很多种，这里只是简单的做个总结，常见的，至于实际应用还是要结合实际情况（CTF比赛里面也经常看到这样的利用方式）。一步步积累。"></a>敏感信息/文件/源码泄露种类有很多种，这里只是简单的做个总结，常见的，至于实际应用还是要结合实际情况（CTF比赛里面也经常看到这样的利用方式）。一步步积累。</h2><p>感谢各位大佬博客的技术支持：</p>
+<p><a href="https://blog.csdn.net/GitChat/article/details/79014538" target="_blank" rel="noopener">谈谈源码泄露</a><br><a href="https://blog.csdn.net/GitChat/article/details/79014538" target="_blank" rel="noopener">常见web源码泄露总结</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/05/10/WEB-源码泄漏/" class="b-link-green">WEB安全-常见源码泄露</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/06/09/随笔-HTTP状态码/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="随笔-HTTP状态码">
+                        
+                        <span class="card-title">随笔-HTTP状态码</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About HTTP State Code
+
+HTTP State Code关于http的状态吗，之前也都是不了解，后来随着burp的使用次数增多，抓的包多了，就慢慢记住了一些，但是始终容易记混，索性就写下来，多动手嘛~菜鸡是不配懒的。
+0</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-06-09
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Essays/" class="post-category" target="_blank">
+                                    Essays
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/05/10/masscan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="masscan的使用">
+                        
+                        <span class="card-title">masscan的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About masscan basic knowledge
+
+About masscan
+0x00 前言masscan的使用类似于nmap，其实也不用分开写，参数什么的也都差不多，只不过masscan比nmap更快一些，当扫描的ip数量比较</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

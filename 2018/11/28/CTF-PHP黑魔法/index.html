@@ -1,0 +1,1354 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="CTF-PHP黑魔法, wh1te">
+    <meta name="description" content="About CTF
+
+
+弱类型比较php弱类型比较一直都是CTF中WEB题目的一大热门，通过一些存在漏洞的函数，或者是版本的缺陷，来考验参赛的选手门对于漏洞以及函数的理解和利用，本篇就介绍了关于这方面的知识。
+php就是一门弱类型语言。弱类">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>CTF-PHP黑魔法 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        CTF-PHP黑魔法
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/Note/" target="_blank">
+                    <span class="chip bg-color">Note</span>
+                </a>
+                
+                <a href="/tags/CTF/" target="_blank">
+                    <span class="chip bg-color">CTF</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/CTF/" class="post-category" target="_blank">
+                        CTF
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-11-28
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>About CTF</p>
+<a id="more"></a>
+
+<h2 id="弱类型比较"><a href="#弱类型比较" class="headerlink" title="弱类型比较"></a>弱类型比较</h2><p>php弱类型比较一直都是CTF中WEB题目的一大热门，通过一些存在漏洞的函数，或者是版本的缺陷，来考验参赛的选手门对于漏洞以及函数的理解和利用，本篇就介绍了关于这方面的知识。</p>
+<p>php就是一门弱类型语言。弱类型就是不需要声明变量的类型，php会根据变量的值自动把变量转换为正确的数据类型。强类型的编辑语言在使用变量前必须声明变量的数据类型。</p>
+<h4 id="缺陷类型"><a href="#缺陷类型" class="headerlink" title="缺陷类型"></a>缺陷类型</h4><h4 id="哈希比较缺陷"><a href="#哈希比较缺陷" class="headerlink" title="哈希比较缺陷"></a>哈希比较缺陷</h4><p>PHP在处理哈希字符串时，会利用”!=”或”==”来对哈希值进行比较，它把每一个以”0E”开头的哈希值都解释为0，所以如果两个不同的密码经过哈希以后，其哈希值都是以”0E”开头的，那么PHP将会认为他们相同，都是0。</p>
+<p>0E开头的md5值对应的一些字符串：</p>
+<table>
+<thead>
+<tr>
+<th>源字符串</th>
+<th>MD5值(32位)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>s878926199a</td>
+<td>0e545993274517709034328855841020</td>
+</tr>
+<tr>
+<td>s155964671a</td>
+<td>0e342768416822451524974117254469</td>
+</tr>
+<tr>
+<td>s214587387a</td>
+<td>0e848240448830537924465865611904</td>
+</tr>
+<tr>
+<td>s214587387a</td>
+<td>0e848240448830537924465865611904</td>
+</tr>
+<tr>
+<td>s878926199a</td>
+<td>0e545993274517709034328855841020</td>
+</tr>
+<tr>
+<td>s1091221200a</td>
+<td>0e940624217856561557816327384675</td>
+</tr>
+<tr>
+<td>s1885207154a</td>
+<td>0e509367213418206700842008763514</td>
+</tr>
+<tr>
+<td>s1502113478a</td>
+<td>0e861580163291561247404381396064</td>
+</tr>
+<tr>
+<td>s1885207154a</td>
+<td>0e509367213418206700842008763514</td>
+</tr>
+<tr>
+<td>s1836677006a</td>
+<td>0e481036490867661113260034900752</td>
+</tr>
+<tr>
+<td>s155964671a</td>
+<td>0e342768416822451524974117254469</td>
+</tr>
+<tr>
+<td>s1184209335a</td>
+<td>0e072485820392773389523109082030</td>
+</tr>
+<tr>
+<td>s1665632922a</td>
+<td>0e731198061491163073197128363787</td>
+</tr>
+<tr>
+<td>s1502113478a</td>
+<td>0e861580163291561247404381396064</td>
+</tr>
+<tr>
+<td>s1836677006a</td>
+<td>0e481036490867661113260034900752</td>
+</tr>
+<tr>
+<td>s1091221200a</td>
+<td>0e940624217856561557816327384675</td>
+</tr>
+<tr>
+<td>s155964671a</td>
+<td>0e342768416822451524974117254469</td>
+</tr>
+<tr>
+<td>s1502113478a</td>
+<td>0e861580163291561247404381396064</td>
+</tr>
+<tr>
+<td>s155964671a</td>
+<td>0e342768416822451524974117254469</td>
+</tr>
+<tr>
+<td>s1665632922a</td>
+<td>0e731198061491163073197128363787</td>
+</tr>
+<tr>
+<td>s155964671a</td>
+<td>0e342768416822451524974117254469</td>
+</tr>
+<tr>
+<td>s1091221200a</td>
+<td>0e940624217856561557816327384675</td>
+</tr>
+<tr>
+<td>s1836677006a</td>
+<td>0e481036490867661113260034900752</td>
+</tr>
+<tr>
+<td>s1885207154a</td>
+<td>0e509367213418206700842008763514</td>
+</tr>
+<tr>
+<td>s532378020a</td>
+<td>0e220463095855511507588041205815</td>
+</tr>
+<tr>
+<td>s878926199a</td>
+<td>0e545993274517709034328855841020</td>
+</tr>
+<tr>
+<td>s1091221200a</td>
+<td>0e940624217856561557816327384675</td>
+</tr>
+<tr>
+<td>s214587387a</td>
+<td>0e848240448830537924465865611904</td>
+</tr>
+<tr>
+<td>s1502113478a</td>
+<td>0e861580163291561247404381396064</td>
+</tr>
+<tr>
+<td>s1091221200a</td>
+<td>0e940624217856561557816327384675</td>
+</tr>
+<tr>
+<td>s1665632922a</td>
+<td>0e731198061491163073197128363787</td>
+</tr>
+<tr>
+<td>s1885207154a</td>
+<td>0e509367213418206700842008763514</td>
+</tr>
+<tr>
+<td>s1836677006a</td>
+<td>0e481036490867661113260034900752</td>
+</tr>
+<tr>
+<td>s1665632922a</td>
+<td>0e731198061491163073197128363787</td>
+</tr>
+<tr>
+<td>s878926199a</td>
+<td>0e545993274517709034328855841020</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>源字符串</th>
+<th>sha1</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10932435112</td>
+<td>0e07766915004133176347055865026311692244</td>
+</tr>
+<tr>
+<td>aaroZmOk</td>
+<td>0e66507019969427134894567494305185566735</td>
+</tr>
+<tr>
+<td>aaK1STfY</td>
+<td>0e76658526655756207688271159624026011393</td>
+</tr>
+<tr>
+<td>aaO8zKZF</td>
+<td>0e89257456677279068558073954252716165668</td>
+</tr>
+<tr>
+<td>aa3OFF9m</td>
+<td>0e36977786278517984959260394024281014729</td>
+</tr>
+</tbody></table>
+<p>顺带放上一个经典CTF题目：</p>
+<pre><code class="php">&lt;?php 
+error_reporting(0); 
+include_once(&#39;flag.php&#39;); 
+highlight_file(&#39;index.php&#39;);  
+
+$md51 = md5(&#39;QNKCDZO&#39;); 
+$a = $_GET[&#39;b&#39;]; 
+$md52 = md5($a); 
+if(isset($a)){ 
+if ($a != &#39;QNKCDZO&#39; &amp;&amp; $md51 == $md52) { 
+    echo $flag; 
+} else { 
+    echo &quot;false!!!&quot;; 
+}} </code></pre>
+<h4 id="md5-sha1函数缺陷"><a href="#md5-sha1函数缺陷" class="headerlink" title="md5 sha1函数缺陷"></a>md5 sha1函数缺陷</h4><p>当md5()函数与sha1()函数对参数进行加密处理时，如果碰到一个数组，md5()函数会返回null，sha1()函数也是一样。利用这个特性构造两个数组即可。(PS：之前忘记了get或post传递数组如何传递了，特地在这里记录一下，a[]=1，这就是表示一个数组)</p>
+<h4 id="数字比较缺陷（类型强制转换）"><a href="#数字比较缺陷（类型强制转换）" class="headerlink" title="数字比较缺陷（类型强制转换）"></a>数字比较缺陷（类型强制转换）</h4><ul>
+<li>php中有两种比较的符号==和===<ul>
+<li>===在进行比较的时候会先判断两种字符串的类型是否相等，再比较。</li>
+<li>== 在进行比较的时候，会先将字符串的类型转换为相同，再比较</li>
+</ul>
+</li>
+</ul>
+<p>例：</p>
+<pre><code class="php">1 &lt;?php
+2 var_dump(&quot;admin&quot;==0);  //true
+3 var_dump(&quot;1admin&quot;==1); //true
+4 var_dump(&quot;admin1&quot;==1) //false
+5 var_dump(&quot;admin1&quot;==0) //true
+6 var_dump(&quot;0e123456&quot;==&quot;0e4456789&quot;); //true 
+7 ?&gt;</code></pre>
+<pre><code class="php">1 == &#39;1abc&#39; // true
+true == &#39;abcd&#39;  // true 
+&quot;42&quot; == &quot;42.0&quot; // true
+&quot;42&quot; == &quot;000042.00&quot; // true
+&quot;42&quot; == &quot;0x000000002A&quot; // true
+&quot;10&quot; == &quot;1e1&quot; // true
+&quot;42&quot; == &quot;0000000004.2E+1&quot; // true
+&quot;42&quot; == &quot;42.0e+000000&quot; // true
+
+[false] == [0] == [NULL] == [&#39;&#39;]
+NULL == false == 0
+</code></pre>
+<pre><code class="php">&#39;0.999999999999999999999&#39; == 1
+
+# true in PHP 4.3.0+
+&#39;0e0&#39; == &#39;0e1&#39;
+&#39;0e0&#39; == &#39;0E1&#39;
+&#39;10e2&#39; == &#39; 01e3&#39;
+&#39;10e2&#39; == &#39;01e3&#39;
+&#39;10e2&#39; == &#39;1e3&#39;
+&#39;010e2&#39; == &#39;1e3&#39;
+&#39;010e2&#39; == &#39;01e3&#39;
+&#39;10&#39; == &#39;010&#39;
+&#39;10.0&#39; == &#39;10&#39;
+&#39;10&#39; == &#39;00000000010&#39;
+&#39;12345678&#39; == &#39;00000000012345678&#39;
+&#39;0010e2&#39; == &#39;1e3&#39;
+&#39;123000&#39; == &#39;123e3&#39;
+&#39;123000e2&#39; == &#39;123e5&#39;
+
+# true in 5.2.1+
+# false in PHP 4.3.0 - 5.2.0
+&#39;608E-4234&#39; == &#39;272E-3063&#39;
+
+# true in PHP 4.3.0 - 5.6.x
+# false in 7.0.0+
+&#39;0e0&#39; == &#39;0x0&#39;
+&#39;0xABC&#39; == &#39;0xabc&#39;
+&#39;0xABCdef&#39; == &#39;0xabcDEF&#39;
+&#39;000000e1&#39; == &#39;0x000000&#39;
+&#39;0xABFe1&#39; == &#39;0xABFE1&#39;
+&#39;0xe&#39; == &#39;0Xe&#39;
+&#39;0xABCDEF&#39; == &#39;11259375&#39;
+&#39;0xABCDEF123&#39; == &#39;46118400291&#39;
+&#39;0x1234AB&#39; == &#39;1193131&#39;
+&#39;0x1234Ab&#39; == &#39;1193131&#39;
+
+# true in PHP 4.3.0 - 4.3.9, 5.2.1 - 5.6.x
+# false in PHP 4.3.10 - 4.4.9, 5.0.3 - 5.2.0, 7.0.0+
+&#39;0xABCdef&#39; == &#39; 0xabcDEF&#39;
+&#39;1e1&#39; == &#39;0xa&#39;
+&#39;0xe&#39; == &#39; 0Xe&#39;
+&#39;0x123&#39; == &#39; 0x123&#39;
+
+# true in PHP 4.3.10 - 4.4.9, 5.0.3 - 5.2.0
+# false in PHP 4.3.0 - 4.3.9, 5.0.0 - 5.0.2, 5.2.1 - 5.6.26, 7.0.0+
+&#39;0e0&#39; == &#39;0x0a&#39;
+
+# true in PHP 4.3.0 - 4.3.9, 5.0.0 - 5.0.2
+# false in PHP 4.3.10 - 4.4.9, 5.0.3 - 5.6.26, 7.0.0+
+&#39;0xe&#39; == &#39; 0Xe.&#39;</code></pre>
+<p>经典例题：</p>
+<pre><code class="php">&lt;?
+$flag = &quot;THIS IS FLAG&quot;; 
+if  (&quot;POST&quot; == $_SERVER[&#39;REQUEST_METHOD&#39;]) 
+{ 
+    $password = $_POST[&#39;password&#39;]; 
+    if (0 &gt;= preg_match(&#39;/^[[:graph:]]{12,}$/&#39;, $password)) 
+    { 
+        echo &#39;Wrong Format&#39;; 
+        exit; 
+    } 
+    while (TRUE) 
+    { 
+        $reg = &#39;/([[:punct:]]+|[[:digit:]]+|[[:upper:]]+|[[:lower:]]+)/&#39;; 
+        if (6 &gt; preg_match_all($reg, $password, $arr)) 
+            break; 
+        $c = 0; 
+        $ps = array(&#39;punct&#39;, &#39;digit&#39;, &#39;upper&#39;, &#39;lower&#39;); 
+        foreach ($ps as $pt) 
+        { 
+            if (preg_match(&quot;/[[:$pt:]]+/&quot;, $password)) 
+                $c += 1; 
+        } 
+        if ($c &lt; 3) break; 
+        if (&quot;42&quot; == $password) echo $flag; 
+        else echo &#39;Wrong password&#39;; 
+        exit; 
+    } 
+}
+?&gt;
+payload: password=42.00e+0000000000
+</code></pre>
+<h4 id="intval-缺陷"><a href="#intval-缺陷" class="headerlink" title="intval()缺陷"></a>intval()缺陷</h4><p>intval函数用于获取变量的整数值。通过使用指定的进制 base 转换（默认是十进制），返回变量 var 的 integer 数值。 intval() 不能用于 object，否则会产生 E_NOTICE 错误并返回 1。</p>
+<p>本来想写在php函数缺陷内的，但是这个函数，往往在进行比较时使用。</p>
+<pre><code>intval() 在转换的时候，会从字符串的开始进行转换直到遇到一个非数字的字符。即使出现无法转换的字符串，intval() 不会报错而是返回 0</code></pre><p>例如：</p>
+<pre><code class="php">var_dump(intval(&#39;2&#39;)) // 2
+var_dump(intval(&#39;3abcd&#39;)) // 3
+var_dump(intval(&#39;abcd&#39;)) // 0
+
+var_dump(0 == &#39;0&#39;); // true
+var_dump(0 == &#39;abcdefg&#39;); // true 
+var_dump(0 === &#39;abcdefg&#39;); // false
+var_dump(1 == &#39;1abcdef&#39;); // true
+
+if(intval($a) &gt; 1000) {
+    mysql_query(&quot;select * from news where id=&quot;.$a)
+}</code></pre>
+<h4 id="strcmp函数缺陷"><a href="#strcmp函数缺陷" class="headerlink" title="strcmp函数缺陷"></a>strcmp函数缺陷</h4><p>这个函数也经常的被使用到，也是一个经典函数。<br>定义:</p>
+<pre><code class="php"> int strcmp ( string $str1 , string $str2 )
+    参数 str1第一个字符串。str2第二个字符串。如果 str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0。</code></pre>
+<p>漏洞：</p>
+<pre><code class="php">在php5.3之前，当这个函数接受到了不符合的类型，这个函数将发生错误，显示了报错的警告信息后，将return 0。</code></pre>
+<p>经典题目：</p>
+<pre><code class="php">&lt;?php
+$password=&quot;***************&quot;;
+$a = array();
+    if (strcmp($a, $password) == 0) {
+        echo &quot;Right!!!login success&quot;;
+        exit();
+    } else {
+        echo &quot;Wrong password..&quot;;
+}
+?&gt;
+结果输出 Right!!!login success。</code></pre>
+<h4 id="ereg-，eregi-函数缺陷"><a href="#ereg-，eregi-函数缺陷" class="headerlink" title="ereg()，eregi()函数缺陷"></a>ereg()，eregi()函数缺陷</h4><ul>
+<li>ereg函数存在两个漏洞：<ul>
+<li>%00截断，在遇到%00的时候会认为字符串结束了</li>
+<li>ereg函数中的参数值如果为数组，会返回false</li>
+</ul>
+</li>
+</ul>
+<p>eregi跟ereg函数漏洞基本一样，区别在于++ereg区分大小写++(这里划重点，也是可以用来绕过的),eregi函数不区分大小写。</p>
+<p>经典题目：</p>
+<pre><code class="php">&lt;?php
+if (isset ($_GET[&#39;password&#39;])) {
+    if (ereg (&quot;^[a-zA-Z0-9]+$&quot;,$_GET[&#39;password&#39;]) === FALSE)    
+       {
+        echo &#39;&lt;p&gt;You password must be alphanumeric&lt;/p&gt;&#39;;
+    }
+    else if (strlen($_GET[&#39;password&#39;]) &lt; 8 &amp;&amp; $_GET[&#39;password&#39;] &gt; 9999999)
+    {
+        if (strpos ($_GET[&#39;password&#39;], &#39;*-*&#39;) !== FALSE)
+        {
+            die(&#39;Flag: &#39; . $flag);
+        }
+        else
+        {
+            echo(&#39;&lt;p&gt;*-* have not been found&lt;/p&gt;&#39;);
+        }
+    }
+    else
+    {
+        echo &#39;&lt;p&gt;Invalid password&lt;/p&gt;&#39;;
+    }
+}
+?&gt;
+附：payload= 1e9%00*-*</code></pre>
+<h4 id="strlen-函数缺陷"><a href="#strlen-函数缺陷" class="headerlink" title="strlen()函数缺陷"></a>strlen()函数缺陷</h4><p>这个函数也是CTF函数黑魔法中的经典函数，自我矛盾。用来进行判断长度，然后结合大小比较来进行出题。</p>
+<p>但是可以通过科学计数法的方法来进行绕过。比如：</p>
+<pre><code>1e9</code></pre><p>经典题目：</p>
+<pre><code class="php">&lt;?php
+@$a = $_GET[&#39;num&#39;];
+if(strlen($a)&lt;4 &amp;&amp; $a&gt;10000){
+    echo $flag;
+}
+else{
+    echo &quot;is too small&quot;;
+}
+?&gt;</code></pre>
+<h4 id="preg-match-，preg-match-all-函数缺陷"><a href="#preg-match-，preg-match-all-函数缺陷" class="headerlink" title="preg_match()，preg_match_all()函数缺陷"></a>preg_match()，preg_match_all()函数缺陷</h4><p>先说preg_match()函数，是为了弥补ereg函数的%00截断问题，替换了ereg函数。但是，在CTF中踩了那么多坑以后，终于发现了制裁它的方法，构造数组，就可以了。<br>经典题目：</p>
+<pre><code class="php">payload: id[]=1</code></pre>
+<pre><code class="php">&lt;?php
+$str = intval($_GET[&#39;id&#39;]);
+$reg = preg_match(&#39;/\d/is&#39;, $_GET[&#39;id&#39;]);    //有0-9的数字 和.在内的符号
+if(!is_numeric($_GET[&#39;id&#39;]) and $reg !== 1 and $str === 1){
+    echo &#39;Flag&#39;;
+}else{
+    echo &quot;no&quot;;
+}// 最终输出了Flag
+?&gt;</code></pre>
+<p>preg_match()函数还存在另一个问题，preg_match 函数用于进行正则表达式匹配，返回 pattern 的匹配次数，它的值将是 0 次（不匹配）或 1 次，因为 preg_match() 在第一次匹配后将会停止搜索。如果在进行正则表达式匹配的时候，没有限制字符串的开始和结束(^ 和 $)，则可以存在绕过的问题。<br>经典题目：</p>
+<pre><code>payload:ip=127.0.0.1 abcdasd</code></pre><pre><code class="php">&lt;?php
+$ip = $_GET[&#39;ip&#39;]; // 可以绕过
+if(!preg_match(&quot;/(\d+)\.(\d+)\.(\d+)\.(\d+)/&quot;,$ip)) {
+  die(&#39;error&#39;);
+} else {
+  echo &quot;Flag&quot;;
+}
+?&gt;// Flag</code></pre>
+<p>preg_match_all()这个函数还没有单独的碰到过，碰到了再做总结吧。（我不是标题党）</p>
+<h4 id="is-numeric-函数缺陷-amp-trim-函数缺陷"><a href="#is-numeric-函数缺陷-amp-trim-函数缺陷" class="headerlink" title="is_numeric()函数缺陷&amp;trim()函数缺陷"></a>is_numeric()函数缺陷&amp;trim()函数缺陷</h4><p>is_numeric() 函数用于检测变量是否为数字或数字字符串。如果指定的变量是数字和数字字符串则返回 TRUE，否则返回 FALSE。</p>
+<p>好，那么问题来了，对于16进制的字符串，是怎么判断的呢？</p>
+<p>它会默认16进制的字符串为整形，这样就可以构造16进制的payload来进行函数绕过。<br>例题：</p>
+<pre><code class="php">16进制的abc=0x616263
+&lt;?php
+header(&#39;content-type:text/html;charset=utf-8&#39;);
+$a=$_GET[&#39;num&#39;];
+var_dump($a);
+if(is_numeric($a)){
+    echo &quot;您输入的是数字&quot;;
+}else{
+    echo &quot;请输入合法字符&quot;;
+}
+?&gt;</code></pre>
+<pre><code class="php">&lt;?php
+echo is_numeric(233333);       // 1
+echo is_numeric(&#39;233333&#39;);    // 1
+echo is_numeric(0x233333);    // 1
+echo is_numeric(&#39;0x233333&#39;);    // 1
+echo is_numeric(&#39;9e9&#39;);   // 1
+echo is_numeric(&#39;233333abc&#39;);  // 0
+?&gt;</code></pre>
+<p>is_numeric 检测的时候会自动过滤掉前面的 ‘ ‘, ‘\t’, ‘\n’, ‘\r’, ‘\v’, ‘\f’ 等字符，但是不会过滤 ‘\0’，如果这些字符出现在字符串尾，也不会过滤，而是返回 false</p>
+<p>trim 函数会过滤空格以及 \n\r\t\v\0，但不会过滤过滤\f</p>
+<pre><code class="php">$a = &quot;  \n\r\t\v\0abc  \f&quot;;
+var_dump(trim($a)); // abc  \f</code></pre>
+<p>利用trim函数以及is_numeric函数实现绕过：</p>
+<pre><code class="php">&lt;?php
+    // %0c1%00
+    $number = &quot;\f1\0&quot;;
+    // trim 函数会过滤 \n\r\t\v\0，但不会过滤过滤\f
+    $number_2 = trim($number);
+    var_dump($number_2); // \f1
+    $number_2 = addslashes($number_2);
+    var_dump($number_2);  // \f1
+    // is_numeric 检测的时候会过滤掉 &#39;&#39;, &#39;\t&#39;, &#39;\n&#39;, &#39;\r&#39;, &#39;\v&#39;, &#39;\f&#39; 等字符
+    // 但是不会过滤 &#39;\0&#39;
+    var_dump(is_numeric($number)); // false
+    var_dump(strval(intval($number_2))); // 1
+    var_dump(&quot;\f1&quot; == &quot;1&quot;); // true
+?&gt;</code></pre>
+<h4 id="in-array-函数缺陷"><a href="#in-array-函数缺陷" class="headerlink" title="in_array()函数缺陷"></a>in_array()函数缺陷</h4><p>in_array()函数用来判断字符串是否存在与数组中，但是在判断的时候，会进行类型强制转换，就会出现数字比较的情况。<br>经典例题：</p>
+<pre><code class="php">&lt;?php
+$array=[0,1,2,&#39;3&#39;];  
+var_dump(in_array(&#39;abc&#39;, $array)); // true
+var_dump(in_array(&#39;1bc&#39;, $array)); // true
+?&gt;</code></pre>
+<p>那这种情况，在SQL注入时，就可以产生很大的作用，比如：</p>
+<pre><code class="php">payload: a = 1&#39; or 1=1--+</code></pre>
+<pre><code class="php">&lt;?php
+@$a = $_GET[&#39;a&#39;];
+$arr = [1,2,3,4];
+if(in_array($a,$arr)){
+    echo &quot;success!&quot;;// 输出success
+}
+?&gt;</code></pre>
+<h4 id="strpos-函数缺陷"><a href="#strpos-函数缺陷" class="headerlink" title="strpos()函数缺陷"></a>strpos()函数缺陷</h4><p>strpos() 函数查找字符串在另一字符串中第一次出现的位置（区分大小写）。<br>经典题目：</p>
+<pre><code class="php">&lt;?php
+if(strpos($_GET[&#39;a&#39;],&#39;abc&#39;) == 0 ){
+    echo &#39;123&#39;;
+}
+else{
+    echo &#39;456&#39;;
+}
+?&gt;</code></pre>
+<p>传入abc或会打印123，但是传入一个数组或者不传入数据一样也会打印123。这个函数也是只解析string类型的字符串，给他个数组就不知道如何解析，于是就返回为null。Null==0！当不传入数据的时候，也是一样的道理，还是返回null。</p>
+<h4 id="变量覆盖"><a href="#变量覆盖" class="headerlink" title="变量覆盖"></a>变量覆盖</h4><h5 id="extract-函数"><a href="#extract-函数" class="headerlink" title="extract()函数"></a>extract()函数</h5><p>用法：</p>
+<pre><code class="php">extract() 函数从数组中将变量导入到当前的符号表。
+该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量。
+EXTR_OVERWRITE - 默认。如果有冲突，则覆盖已有的变量。
+EXTR_SKIP - 如果有冲突，不覆盖已有的变量。
+EXTR_PREFIX_SAME - 如果有冲突，在变量名前加上前缀 prefix。
+EXTR_PREFIX_ALL - 给所有变量名加上前缀 prefix。
+EXTR_PREFIX_INVALID - 仅在不合法或数字变量名前加上前缀 prefix。
+EXTR_IF_EXISTS - 仅在当前符号表中已有同名变量时，覆盖它们的值。其它的都不处理。
+EXTR_PREFIX_IF_EXISTS - 仅在当前符号表中已有同名变量时，建立附加了前缀的变量名，其它的都不处理。
+EXTR_REFS - 将变量作为引用提取。导入的变量仍然引用了数组参数的值。
+这个函数的重点就是默认将已经有的变量给覆盖掉</code></pre>
+<p>其实很简单，就是变量覆盖，给个例题一看就知道了：</p>
+<pre><code class="php">&lt;?php
+  $auth = &#39;yaun&#39;;  
+    extract($_GET); 
+    if($auth == 1){  
+        echo &quot;private!&quot;;  
+    } else{  
+        echo &quot;public!&quot;;  
+    }  
+?&gt;
+参数：auth=1</code></pre>
+<p>这样，输出privatel了。<br>经典题目：</p>
+<pre><code class="php">&lt;?php
+
+   $flag = ‘xxx’;
+
+   extract($_GET);
+
+   if (isset($gift)) 
+  {
+       $content = trim(file_get_contents($flag));
+
+       if ($gift == $content) 
+      {
+            echo ‘hctf{…}’;
+
+      } 
+       else 
+      {
+           echo ‘Oh..’;
+      }
+
+   } 
+?&gt;</code></pre>
+<h5 id="parse-str-函数导致变量覆盖"><a href="#parse-str-函数导致变量覆盖" class="headerlink" title="parse_str()函数导致变量覆盖"></a>parse_str()函数导致变量覆盖</h5><p>parse_str() 函数用于把查询字符串解析到变量中，如果没有array 参数，则由该函数设置的变量将覆盖已存在的同名变量。 极度不建议 在没有 array参数的情况下使用此函数，并且在 PHP 7.2 中将废弃不设置参数的行为。此函数没有返回值。</p>
+<pre><code class="php">&lt;?php
+if(empty($_GET[&#39;id&#39;])){
+    show_source(__FILE__);
+    die();
+}else{
+    include(&#39;flag.php&#39;);
+    $a = &quot;http://blog.51cto.com/12332766&quot;;
+    $id = $_GET[&#39;id&#39;];
+    @parse_str($id);
+    if($a[0] == &#39;yaun&#39;){
+        echo &quot;yes is flag&quot;;
+    }else{
+        exit(&#39;其实很简单，其实并不难&#39;);
+    }
+}
+?&gt;
+payload:id=a[]=yaun</code></pre>
+<p>当传递参数id=a[]=yaun的时候，经过parse_str()函数的处理将a变成变量。但是原来有同名的变量，于是就将原来的变量覆盖掉，同时覆盖的还有变量的值</p>
+<h5 id="变量覆盖-1"><a href="#变量覆盖-1" class="headerlink" title="$$变量覆盖"></a>$$变量覆盖</h5><p>直接上代码看：</p>
+<pre><code class="php">&lt;?php
+$a = 1;
+$b = 2;
+$c = &#39;a&#39;;
+$$c = $b;    //   $a = $b
+var_dump($a);   //   输出2
+?&gt;</code></pre>
+<p>CTF经典题目：</p>
+<pre><code class="php">&lt;?php
+   include “flag.php”;
+
+   $_403 = “Access Denied”;
+
+   $_200 = “Welcome Admin”;
+
+   if ($_SERVER[&quot;REQUEST_METHOD&quot;] != “POST”)
+   {
+         die(“BugsBunnyCTF is here :p…”);
+   }
+   if ( !isset($_POST[&quot;flag&quot;]) )
+   {
+         die($_403);
+   }
+   foreach ($_GET as $key =&gt; $value)
+   {
+         $$key = $$value;
+   }
+   foreach ($_POST as $key =&gt; $value)
+   {
+         $$key = $value;
+   }
+   if ( $_POST[&quot;flag&quot;] !== $flag )
+   {
+         die($_403);
+   }
+   echo “This is your flag : “. $flag . “\n”;
+   die($_200);
+?&gt;</code></pre>
+<pre><code class="php">Get方法传输：_200=flag
+Post方法传输：flag=abcde</code></pre>
+<h4 id="json-decode-函数"><a href="#json-decode-函数" class="headerlink" title="json_decode()函数"></a>json_decode()函数</h4><p>先介绍下json字符串吧，json就是一种数据交换格式，在 JS 语言中，一切都是对象。因此，任何支持的类型都可以通过 JSON 来表示，例如字符串、数字、对象、数组等。但是对象和数组是比较特殊且常用的两种类型：</p>
+<pre><code>对象表示为键值对
+数据由逗号分隔
+花括号保存对象
+方括号保存数组</code></pre><p>经典例题：</p>
+<pre><code class="php">&lt;?php
+if (isset($_POST[&#39;message&#39;])) {
+    $message = json_decode($_POST[&#39;message&#39;]);
+    $key =&quot;*********&quot;;
+    if ($message-&gt;key == $key) {
+        echo &quot;flag&quot;;
+    } 
+    else {
+        echo &quot;fail&quot;;
+    }
+ }
+ else{
+     echo &quot;~~~~&quot;;
+ }
+?&gt;
+
+payload: message={&quot;key&quot;:0}</code></pre>
+<p>这个payload利用的还是php字符比较的漏洞，0==’admin’</p>
+<h4 id="switch-函数漏洞"><a href="#switch-函数漏洞" class="headerlink" title="switch()函数漏洞"></a>switch()函数漏洞</h4><p>switch函数是php中的条件分支语句，通过对switch中的参数值进行判断，选择case中的代码去执行，但是会将switch中的参数转换为int类型，那么问题就来了，在进行类型转换的时候，’1admin’==’1’的。<br>经典题目：</p>
+<pre><code class="php">&lt;?php
+$i =&quot;2abc&quot;;  
+switch ($i) {  
+case 0:  
+case 1:  
+case 2:  
+echo &quot;i is less than 3 but not negative&quot;;  
+break;  
+case 3:  
+echo &quot;i is 3&quot;;  
+} 
+// 输出了 i is less than 3 but not negative
+?&gt;</code></pre>
+<p>switch还有一个特别骚的坑，直接上代码去看:</p>
+<pre><code class="php">&lt;?php
+$a=0;
+ switch($a){
+    case $a&gt;=0: echo 0;break;
+    case $a&gt;=10:echo 1;break; // 输出1
+    default: echo 2;break;    
+ }
+?&gt;</code></pre>
+<p>这个代码，骚在哪里？</p>
+<p>第一个分支判断语句，并不会成立，因为case的条件是 0&gt;=0 ，也就是 true ，但是参数$a为0，两者并不相等，但是第二个分支语句的case条件为 0&gt;=10 ，也就是false，参数$a的值为0，’0’==’false’,所以case $a&gt;=10成立。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>从上面的一些案例去看，很多函数问题都是基于php是一个弱类型的语言，在进行类型转换的时候出现的问题。所以类型，是php黑魔法当中比较重要的一个环节。</p>
+<p>本来是打算把php弱类型比较跟php函数缺陷写在一起的，然后写的时候发现，想的太简单了，一总结，一大堆，简直就是越写越多。写一点，想起来一点，再写一点，又想起来一点，简直是头大。搞了三天有余，终于加班加点完工……（PS：反序列化我会当成单独的一篇去写，莫着急）。</p>
+<hr>
+<p>鸣谢：</p>
+<p><a href="https://blog.csdn.net/qq_40491569/article/details/83175838" target="_blank" rel="noopener">php函数漏洞</a></p>
+<p><a href="https://www.restran.net/2016/09/26/php-security-notes/" target="_blank" rel="noopener">CTF中的php指示汇总</a></p>
+<p><a href="http://archimesan.me/2017/12/21/php%E5%BC%B1%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E/#%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E7%9A%84%E5%8F%82%E6%95%B0%E7%9A%84%E6%9D%BE%E6%95%A3%E6%80%A7" target="_blank" rel="noopener">php弱类型漏洞</a></p>
+<p><a href="http://drops.xmd5.com/static/drops/tips-4483.html" target="_blank" rel="noopener">浅谈PHP弱类型安全</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/28/CTF-PHP黑魔法/" class="b-link-green">CTF-PHP黑魔法</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/12/25/CTF-某次公安内网比赛/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="CTF-某次公安内网比赛">
+                        
+                        <span class="card-title">CTF-某次公安内网比赛</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About CTF&amp;wp
+
+
+
+CTF比赛纪实其实就是某次公安内网比赛的代打记录，由于题目实在是太骚了，所以就做个记录。仿射密码题目：
+仿射密码：
+ugxjnhisjrzwvrkizgptpj
+b=23
+不多bb了，直接上解题网址：</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-25
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/write-up/" class="post-category" target="_blank">
+                                    write up
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/write-up/" target="_blank">
+                        <span class="chip bg-color">write up</span>
+                    </a>
+                    
+                    <a href="/tags/CTF/" target="_blank">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/11/21/WEB-00截断与-00截断/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="WEB-00截断与%00截断">
+                        
+                        <span class="card-title">WEB-00截断与%00截断</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About WEB Security
+
+
+00截断与%00截断在文件上传的时候，经常会遇到对上传文件的后缀名做限制的，有时候用00截断，有时候用%00截断，一直比较懵逼，就在这里做下解释。
+%00截断%00的使用是在路径上！
+%00的使用是</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/WEB/" target="_blank">
+                        <span class="chip bg-color">WEB</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

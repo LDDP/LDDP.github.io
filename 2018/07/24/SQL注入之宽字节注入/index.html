@@ -1,0 +1,817 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="SQL注入之宽字节注入, wh1te">
+    <meta name="description" content="About SQL Injection
+
+
+宽字节注入0x01 前言对于SQL注入，我估计搞安全的都玩的滚瓜烂熟了，搞站什么的都是分分钟来的，但是之前做了一道宽字节注入的题目，又打开了我一扇通往新世界的大门(PS:早都碰到过，只不过一直没有">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>SQL注入之宽字节注入 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        SQL注入之宽字节注入
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/Note/" target="_blank">
+                    <span class="chip bg-color">Note</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Skill/" class="post-category" target="_blank">
+                        Skill
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-07-24
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>About SQL Injection</p>
+<a id="more"></a>
+<hr>
+<h2 id="宽字节注入"><a href="#宽字节注入" class="headerlink" title="宽字节注入"></a>宽字节注入</h2><h4 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h4><p>对于SQL注入，我估计搞安全的都玩的滚瓜烂熟了，搞站什么的都是分分钟来的，但是之前做了一道宽字节注入的题目，又打开了我一扇通往新世界的大门(PS:早都碰到过，只不过一直没有时间写)。</p>
+<h4 id="0x02-宽字节和mysql"><a href="#0x02-宽字节和mysql" class="headerlink" title="0x02 宽字节和mysql"></a>0x02 宽字节和mysql</h4><p>单字节字符集： 所有的字符都使用一个字节来表示，比如 ASCII 编码。</p>
+<p>多字节字符集： 在多字节字符集中，一部分字节用多个字节来表示，另一部分（可能没有）用单个字节来表示。</p>
+<p>两位的多字节字符有一个前导字节和尾字节。 在某个多字节字符集内，前导字节位于某个特定范围内，尾字节也一样。</p>
+<p>UTF-8 编码： 是一种编码的编码方式（多字节编码），它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。</p>
+<p>常见的宽字节： GB2312、GBK、GB18030、BIG5、Shift_JIS，实际上只有两字节。宽字节带来的安全问题主要是吃ASCII字符（一字节）的现象。(GB2312 不存在宽字节注入。)</p>
+<p>在mysql中，用于转义（即在字符串中的符号前加上”\”）的函数有addslashes，mysql_real_escape_string，mysql_escape_string等，还有一种情况是magic_quote_gpc，不过高版本的PHP将去除这个特性。</p>
+<p>注意：HTML页面设置的编码跟注入是没有任何联系的，它只不过使规定了HTML渲染时候的字符集设置，与服务器端以及数据库没有任何联系。</p>
+<h4 id="0x03-简单的宽字节示例"><a href="#0x03-简单的宽字节示例" class="headerlink" title="0x03 简单的宽字节示例"></a>0x03 简单的宽字节示例</h4><p><a href="http://103.238.227.13:10083/" target="_blank" rel="noopener">题目链接</a></p>
+<p>出自Bugku的一道题目，非常基本。正常的传递单引号，没有任何效果。</p>
+<p><img src="http://p726yrsf9.bkt.clouddn.com/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5-1.png" alt="image"></p>
+<p>查看源代码</p>
+<p><img src="http://p726yrsf9.bkt.clouddn.com/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5-2.png" alt="image"></p>
+<p>红线标注了gb2312，这是html编码方式，但是提示了我们可能是这个方向，于是就尝试</p>
+<pre><code class="bash">http://103.238.227.13:10083/?id=1%df&#39;</code></pre>
+<p><img src="http://p726yrsf9.bkt.clouddn.com/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5-3.png" alt="image"><br>发现页面报错，也就是’没有被闭合，而是逃逸了出来生效了，SQL语句如下：</p>
+<pre><code class="sql">select * from key where id=&#39;1運&#39;&#39; limit 1 </code></pre>
+<p>这时候就明显的看出来了有个多余的单引号逃逸了，也就是你传递进去的那个单引号生效了，至此，这道题目的考察项已经完全get到了。</p>
+<p>构造payload：</p>
+<pre><code class="bash">http://103.238.227.13:10083/?id=1%df&#39; union select 1,string from sql5.key--+</code></pre>
+<h5 id="那么问题来了，为什么会出现这种情况呢？"><a href="#那么问题来了，为什么会出现这种情况呢？" class="headerlink" title="那么问题来了，为什么会出现这种情况呢？"></a>那么问题来了，为什么会出现这种情况呢？</h5><p>mysql设置的字符集为gbk，并且使用了那些上面所提到的过滤函数，在你传递’的时候，会在前面加上\，导致&#39;，使之被转义，从而无法闭合SQL语句，无法达到预期效果。</p>
+<p>上面介绍了gbk是一种两个字节的编码方式，当传递%df’的时候，后台接收为%df%5c%27，这时候，数据库由于是gbk编码，所以数据库会认为%df%5c是一个中文字符’運’，转义的\被吃掉了，无法转义’，这时候就导致了’可以成功逃逸出来，可以对SQL语句进行下一步改造。</p>
+<p>可以写个php页面验证下gbk编码中文字符的长度：</p>
+<pre><code class="php">&lt;?php
+header(&#39;content-type:text/html;charsetr=gbk&#39;);
+echo strlen(&quot;哇&quot;);
+?&gt;</code></pre>
+<p>这里还要提一点，不管你在单引号前面加什么字符，都要确保这个字符的ascii大于128，否则无法达到汉字的范围，也就无法使宽字节注入生效。</p>
+<h4 id="0x04-gbk与gb2312"><a href="#0x04-gbk与gb2312" class="headerlink" title="0x04 gbk与gb2312"></a>0x04 gbk与gb2312</h4><p>前文提到了，gb2312不存在宽字节注入，我当时也很不理解，看了离别歌大佬的博客以后，顿有所悟(大佬终究是大佬)。</p>
+<p>GBK与GB2312都是宽字节家族的一员，按理来说，GBK都存在宽字节注入，GB2312也存在，但是实际上，当采用字符集编码为GB2312时，宽字节注入这种情况便无法发生了，为什么呢？这要归结于GB2312编码的取值范围，它的高位范围是0xA1~0xF7，低位范围是0xA1~0xFE(PS:前一位是高位，后一位是低位)，而\是0x5c，是不在低位范围中的。所以，0x5c也就是\根本不在gb2312的编码范围内，也就是说，无论如何，都无法构造出gb2312认识的编码，也就不存在吞掉\，无法构造注入了。</p>
+<p>搬运大佬的一句总结：</p>
+<pre><code class="bash">把这个思路扩展到世界上所有多字节编码，我们可以这样认为：只要低位的范围中含有0x5c的编码，就可以进行宽字符注入。</code></pre>
+<h4 id="0x05-进阶示例"><a href="#0x05-进阶示例" class="headerlink" title="0x05 进阶示例"></a>0x05 进阶示例</h4><ol>
+<li>在 PHP 代码中使用 mysql_query(“set names GBK”)； 指定三个字符集（客户端、连接层、结果集）都是GBK编码。</li>
+</ol>
+<p>demo：</p>
+<pre><code class="php">&lt;?php 
+$name = addslashes($_GET[&#39;name&#39;]);
+$con=mysqli_connect(&quot;localhost&quot;,&quot;root&quot;,&quot;fuckroot&quot;,&quot;sqli&quot;); 
+if (mysqli_connect_errno($con)) 
+{ 
+    echo &quot;连接 MySQL 失败: &quot; . mysqli_connect_error(); 
+} 
+// 执行查询
+$sql = &quot;select * from user where name = &#39;&quot;.$name.&quot;&#39;&quot;;
+echo &quot;SQL:&quot;.$sql.&quot;&lt;br&gt;&quot;;
+mysqli_query($con,&quot;set names GBK&quot;);
+$result = mysqli_query($con,$sql);
+if(!$result){
+    // 打印错误原因
+    printf(&quot;Error: %s\n&quot;, mysqli_error($con));
+}
+// echo(&quot;Res num_rows:&quot;.$result-&gt;num_rows.&quot;&lt;br&gt;&quot;);
+// 一条条获取
+while ($row=mysqli_fetch_row($result))
+{
+    printf (&quot;%s : %s&quot;,$row[0],$row[1]);
+    echo &quot;&lt;br&gt;&quot;;
+}
+// 释放结果集合
+mysqli_free_result($result);
+// $row=mysqli_fetch_row($result);
+echo &quot;Closed!&quot;;
+mysqli_close($con);
+?&gt;</code></pre>
+<p>利用的poc：</p>
+<pre><code class="bash">?name=111%de&#39; or 1=1--+</code></pre>
+<p>这里利用了addslashes函数进行转义特殊字符，而我们传递进去的是%de’，就会变成0xde5c，而上文设定的字符集是GBK，之后就会产生宽字节注入，道理与上文一样。<br>2.<br>php的iconv函数，对数据进行转码，有三种情况：</p>
+<p>2.1  </p>
+<pre><code class="php">$name = iconv(&quot;GBK&quot;,&quot;UTF-8&quot;, addslashes($_GET[&#39;name&#39;])) ; </code></pre>
+<p>页面设置都是UTF-8编码，但是页面为了接受部分用户以GBK编码方式提交的数据，会对用户的数据先进行转码，把GBK转为UTF-8，然后再拼接SQL语句，进行一系列的操作。但是，假如传递了一个%df进去，在拼接SQL语句之前，也就是转码的时候，这个单引号逃逸就已经发生了。因为GBK会把%df\解码为一个中文字符，然后进行存储。简单理解，也就是说，进行UTF转码之前，GBK就已经操作过了，所以即便进行UTF-8转码，转的也是已经生效的payload “運’”，无法对单引号进行实际操作。至此，单引号溢出，SQL注入形成。</p>
+<p>利用的poc：</p>
+<pre><code class="bash">name=111%B3‘ or 1=1--+</code></pre>
+<p>2.2</p>
+<pre><code class="bash">$name = iconv(&quot;UTF-8&quot;,&quot;GBK&quot;, addslashes($_GET[&#39;name&#39;])) ; </code></pre>
+<p>这个跟第一个类似，就是把UTF-8的编码转码成GBK。其实按道理来说对字符串进行转义，然后转码，按照UTF-8的编码方式进行操作，应该不会出现单引号溢出的这种问题。但是，74CMS 3.4版存在这样的漏洞，这就很gay。</p>
+<p>现在，直接传递一个GBK编码的中文字符“錦’”参数值，这个参数先被过滤函数转义：</p>
+<pre><code class="bash">graph LR
+錦&#39;--&gt;錦\&#39;</code></pre>
+<p>那么GBK编码的16进制结果就变成了0xE55C5C27，好，现在把数据传入数据库，用UIF-8对其进行解码，UTF-8并不认识0xE5，于是0xE5就变成了乱码，而0x5C5C27会被正常解码为“\‘”，就是：</p>
+<pre><code class="bash">graph LR
+0xE55C5C2--&gt;�\\&#39;</code></pre>
+<p>现在，出现了两个转义用的反斜线，这时候，单引号就可以成功溢出了，因为第一个反斜线转义了第二个反斜线，使第二个反斜线失去了转义功能，也就导致了单引号的逃逸。至此，成功引发了SQL注入。</p>
+<p>利用的POC：</p>
+<pre><code class="bash">name=錦&#39; or 1=1--+
+name=%E9%8C%A6&#39; or 1=1--+</code></pre>
+<p>2.3</p>
+<p>这种情况，我认为，基本不会出现，不过网络世界这么大，啥鸟都有，也说不定。</p>
+<p>这种是对UTF-8的编码进行GBK转码，然后使用过滤函数进行转义：</p>
+<pre><code class="bash">$name = iconv(&quot;UTF-8&quot;,&quot;GBK&quot;, $_GET[&#39;name&#39;]) ; 
+$name = addslashes($name);</code></pre>
+<p>看起来就很奇葩，但是有可能存在，利用的POC与2.2一样，只不过解析过程不一样。传递参数：</p>
+<pre><code class="bash">name=錦&#39;</code></pre>
+<p>先进行GBK转码(为了方便理解，我都以16进制表示):</p>
+<pre><code class="bash">graph LR
+0xE98CA627--&gt;0xE55C27</code></pre>
+<p>然后进行过滤函数转义：</p>
+<pre><code class="bash">graph LR
+0xE55C27--&gt;0xE55C5C5C27</code></pre>
+<p>惊奇的发现，5C多了两个。这因为，进行完GBK转码以后，在进行过滤函数转义的时候，会把0x5C认为是一个\特殊字符，所以会对这个反斜线进行转义，也就是多加一个反斜线变成\\，也就是5C5C，之后数据进入数据库，GBK对其进行解码，0xE55C会被解码为“錦”，0x5C5C27会被解码为“\\‘”，也就是：</p>
+<pre><code class="bash">graph LR
+0xE55C5C5C27--&gt;錦\\&#39;</code></pre>
+<p>至此，又跟2.2介绍的一样了，殊途同归，单引号成功逃逸，SQL注入产生。</p>
+<h4 id="0x06-小结"><a href="#0x06-小结" class="headerlink" title="0x06 小结"></a>0x06 小结</h4><p>关于宽字节，我目前也就在CTF里面接触到了，不过既然碰到了我就写一写，这方面确实菜的不行，所以避免不了去看一些大佬的分析，也学到了很多的东西。</p>
+<p>防范：</p>
+<p>1.gbk编码造成的宽字符注入问题，解决方法是设置character_set_client=binary。</p>
+<p>2.单独调用set names gbk和mysql_real_escape_string是无法避免宽字符注入问题的。还得调用mysql_set_charset来设置一下字符集。</p>
+<p>3.谨慎使用iconv来转换字符串编码，很容易出现问题。只要我们把前端html/js/css所有编码设置成gbk，mysql/php编码设置成gbk，就不会出现乱码问题。不用画蛇添足地去调用iconv转换编码，造成不必要的麻烦。</p>
+<p>4.在代码审计或网站开发中需要留意一下，类似 GBK 和 BIG5 这种的双字节编码，同时存在低位可以是 %5C 的字符。</p>
+<h2 id="PS：最近老是写到凌晨，有不足或者错误的地方，看到了希望可以及时联系我进行纠正。"><a href="#PS：最近老是写到凌晨，有不足或者错误的地方，看到了希望可以及时联系我进行纠正。" class="headerlink" title="PS：最近老是写到凌晨，有不足或者错误的地方，看到了希望可以及时联系我进行纠正。"></a>PS：最近老是写到凌晨，有不足或者错误的地方，看到了希望可以及时联系我进行纠正。</h2><h4 id="特别鸣谢"><a href="#特别鸣谢" class="headerlink" title="特别鸣谢"></a>特别鸣谢</h4><p><a href="https://www.leavesongs.com/PENETRATION/mutibyte-sql-inject.html" target="_blank" rel="noopener">浅析白盒审计中的字符编码以及SQL注入|离别歌</a></p>
+<p><a href="http://www.evilclay.com/2017/07/20/%E5%AE%BD%E5%AD%97%E8%8A%82%E6%B3%A8%E5%85%A5%E6%B7%B1%E5%85%A5%E7%A0%94%E7%A9%B6/" target="_blank" rel="noopener">宽字节注入深入研究|Anka9080’s|不忘初心</a></p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/07/24/SQL注入之宽字节注入/" class="b-link-green">SQL注入之宽字节注入</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/08/10/文件上传-一/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="文件上传(一)">
+                        
+                        <span class="card-title">文件上传(一)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About File Upload
+
+
+0x00 前言文件上传什么的，都属于WEB漏洞的基础，虽说是基础，但是也是能get到很多知识点的，再加上各种变化，也就可以实现任意文件的上传。
+关于文件上传，在github中也有一个文件上传的靶场，u</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/07/23/一句话木马/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="一句话木马">
+                        
+                        <span class="card-title">一句话木马</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About WebShell
+
+
+
+WebShell关于webshell在这里做一个简单的讲解，就是以asp、php、jsp或者cgi等网页文件形式存在的一种命令执行环境，也可以将其称做为一种网页后门。通过这个后门，可以使用特定工具(比如：</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-07-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

@@ -1,0 +1,893 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="python的学习之路一, wh1te">
+    <meta name="description" content="On the learning of Python
+
+pythonpython是一门非常厉害的语言，关于它的介绍，就不多说了，只要掌握了基础的语法，剩下的就是逐渐认识python的一些库，python的厉害之处就是有很多各种各样的库，把这些">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>python的学习之路一 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        python的学习之路一
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/python/" target="_blank">
+                    <span class="chip bg-color">python</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Learning-notes/" class="post-category" target="_blank">
+                        Learning notes
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-05-10
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>On the learning of Python</p>
+<a id="more"></a>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>python是一门非常厉害的语言，关于它的介绍，就不多说了，只要掌握了基础的语法，剩下的就是逐渐认识python的一些库，python的厉害之处就是有很多各种各样的库，把这些库组合起来，才是最强大存在。</p>
+<p>目前python一般就是2.x版本以及3.x版本，我是学的py3.x的版本，其实两个版本差距不大，具体应用的时候，做修改就行了。这篇博客对于有一定代码基础的看起来会比较熟悉，毕竟其实也是我自己做的笔记。</p>
+<h4 id="0x01-语法"><a href="#0x01-语法" class="headerlink" title="0x01 语法"></a>0x01 语法</h4><p>python文件的后缀一般就是.py，直接上代码，可以非常直观的看出语法的不同，这里拿php进行比较。</p>
+<p>php:</p>
+<pre><code class="php">&lt;?php
+$a = 123; //php在定义变量的时候需要加上$，并且以;结尾
+$b = array(&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;);
+echo $a;
+echo $b;
+?&gt;</code></pre>
+<p>python：</p>
+<pre><code class="python">a = 123 //python在定义变量的时候，不需要加任何符号，直接写就ok了，结尾也不需要分号
+b = [&#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;]
+print(a)
+print(b)</code></pre>
+<p>好了，做个对比，一目了然。</p>
+<p>粘上我写的第一个小程序，不过是基于2.x版本的，当时写的时候没有注意字符集，导致python3不兼容了。</p>
+<pre><code class="python"># coding:utf-8
+p = 1
+while p:
+    print(&#39;--------------小白工作室----------------&#39;)
+    str = &#39;&#39;&#39;（1）取和\n（2）取平均值\n（3）求乘积\n（4）退出&#39;&#39;&#39;
+    print str
+    option = input(&#39;请输入对应编号:&#39;)
+    if option == 1:
+        s = 0
+        print(&#39;请输入对数值，结束输入请输入0&#39;)
+        num = input(&#39;数值:&#39;)
+        while num!=0:
+            s = num+s
+            num = input(&#39;数值:&#39;)
+        print &#39;和为：%s&#39; % s
+    elif option == 2:
+        s = 0
+        i = 0
+        print(&#39;请输入对数值，结束输入请输入0&#39;)
+        num = input(&#39;数值:&#39;)
+        while num!=0:
+            s = num+s
+            i = i + 1
+            num = input(&#39;数值:&#39;)
+        s = s/i
+        print &#39;平均值为：%s&#39; % s
+    elif option == 3:
+        s = 1
+        print(&#39;请输入对数值，结束输入请输入0&#39;)
+        num = input(&#39;数值:&#39;)
+        while num!=0:
+            s = num*s
+            num = input(&#39;数值:&#39;)
+        print &#39;积为：%s&#39; % s
+    elif option == 4:
+        print(&#39;Program end!&#39;)
+        p = False
+    else:
+        print(&#39;为啥不按提示来？&#39;)</code></pre>
+<p>现在看来确实白的不行。</p>
+<h4 id="0x02-python变量："><a href="#0x02-python变量：" class="headerlink" title="0x02 python变量："></a>0x02 python变量：</h4><pre><code>区分大小写
+输入可以用：raw_input()
+            input() 最好用这个，可以接收字符串
+输出可以用：print
+例如：
+    raw_input(&#39;name:&#39;)
+    print &#39;%d fdadsad %s&#39; % (111,&#39;python&#39;)</code></pre><p>一、数字：  %d or %f</p>
+<pre><code>定义变量  数字可以不加引号 但是字符串 需要加引号
+Python 区分大小写 也就是说 case 跟 Case 是有区别的
+python 支持五中基本的数字类型 有三种是整形
+有符号整形 1 -1 -12  123  
+    长整型 10000000054646  djadjkjdhasdhkasdh  
+    布尔值 True Flase
+浮点值 3.1415926 2.15115
+复数 6.23+1.5j   -1.23-875j
+例如:a = &#39;sb&#39; or a = &quot;sb&quot; or a = 123</code></pre><p>二、字符串：  %s</p>
+<pre><code>Python支持使用成对单引号或双引号，三引号（三个连续的单引号或者双引号）
+    可以用来包含特殊字符。使用索引操作符[]和切片操作符[:]可以得到子字符
+    串。字符串有其特有的索引规则：第一个字符串的索引是0，最后一个字符串
+    的索引是-1。加好（+）用于字符串连接运算，星号（*）则用于字符串重复。
+例如：
+pystr = &#39;python&#39;
+iscool = &#39;is cool!&#39;
+pystr[0]
+结果为：    p
+pystr[2:5]
+结果为:        tho
+iscool[:2]
+结果为:        is
+iscool[3:]
+结果为:        cool!
+iscool[-1]
+结果为:        !
+pystr + iscool
+结果为:        pythonis cool!
+pystr * 2
+结果为:        pythonpython
+pystr = &#39;&#39;&#39;python
+...is cool&#39;&#39;&#39;
+print pystr
+结果为:        python
+            is cool</code></pre><p>三、列表和元组</p>
+<pre><code>可以把列表跟元组当成普通的数组，它能保存任意数量任意类型的Python对象。
+    和数组一样可以通过从0开始的数字索引访问元素，但是列表和元组可以存
+    储不同类型的对象。
+列表元素用[]包裹，元素的个数以及元素的值可以改变。元组元素用()包裹，
+    但不可以更改。切片操作得到子集，与字符串操作类似。
+例如：
+    aList = [1,2,3,4]
+    aList[0] = 5 
+    aList
+    结果为:        [5,2,3,4]
+    aTuple = (&#39;robots&#39;,77,93,&#39;try&#39;)
+    aTuple[1] = 5
+    结果为:        报错，不执行</code></pre><p>四、字典</p>
+<pre><code>字典是Python中的映射数据类型，工作原理类似于Perl中的关联数组或哈希表，
+    由键-值对(key-value)构成。字典元素由{}构成。
+例如：
+    aDict = {&#39;host&#39;:&#39;earth&#39;}
+    aDict[&#39;port&#39;] = 80
+    aDict
+    结果为:        {&#39;host&#39;:&#39;earth&#39;,&#39;port&#39;:80}
+    aDict.keys()
+    结果为:        [&#39;host&#39;,&#39;port&#39;]
+    for key in aDict:
+    ... print key,aDict[key]
+    ...
+    结果为:        host earth
+                port 80</code></pre><p>五、if语句</p>
+<pre><code>if 条件1:
+    逻辑语句
+elif 条件2:
+    逻辑语句
+else
+    逻辑语句</code></pre><p>六、while语句</p>
+<pre><code>while 条件:
+    逻辑语句</code></pre><p>七、for循环</p>
+<pre><code>print输出语句会自带一个换行符
+for item in [&#39;e-mail&#39;,&#39;net-surfing&#39;,&#39;homework&#39;,&#39;chat&#39;]:
+    print item,
+print
+for i in range(5):
+    print i,
+print</code></pre><p>八、打开文件</p>
+<pre><code>handle = open(file_name,access_mode = &#39;r&#39;)
+file_name变量包含我们希望打开的文件的字符串名字，access_mode中的&#39;r&#39;
+    表示读，&#39;w&#39;表示写，&#39;a&#39;表示添加，&#39;+&#39;表示读写，&#39;b&#39;表示二进制访问
+    如果没有提供access_mode,默认值为&#39;r&#39;。如果open()成功，会返回一
+    个文件对象句柄，所有后续的操作都必须通过此文件操作句柄进行。</code></pre><p>九、and</p>
+<pre><code>Python的and逻辑操作符可以将任意表达式连接在一起并得到一个布尔类型的值</code></pre><p>十、函数</p>
+<pre><code>Python中的函数用小括号（）调用。函数在调用之前必须定义。如果函数中没有
+    return语句，就会自动的返回None对象。
+定义函数：
+    def 函数名(变量)：
+        执行代码
+        return 返回值
+例如：
+    def addMe2Me(x):
+        &#39;apply + operation to argument&#39;
+        return (x+x) 
+    addMe2Me([-1,&#39;abc&#39;])
+默认参数：
+    def foo(debug=Ture):
+        &#39;determine if in debug mode with default argument&#39;
+        if debug:
+            print &#39;in debug mode&#39;
+        print &#39;done&#39;
+    执行结果:
+        foo()
+        in debug mode
+        done
+        foo(False)
+        done</code></pre><p>十一、类</p>
+<pre><code>定义类：
+class ClassName(object):
+    &quot;&quot;&quot;docstring for ClassName&quot;&quot;&quot;
+    def __init__(self, arg):
+        super(ClassName, self).__init__()
+        self.arg = arg</code></pre><p>十二、模块</p>
+<pre><code>模块是一种住址形式，它将彼此有关系的Python代码组织到一个个独立文件当中。
+    模块可以包含可执行代码，函数，和类。当你创建了一个Python源文件，模块的
+    名字就是不带后缀的文件名。
+导入模块：
+    import 模块名
+访问模块函数或模块变量：
+    module.function()
+    module.variable
+    实例：
+        import sys
+        sys.stdout.write(&#39;hello word\n&#39;)</code></pre><p>这是当时做的小笔记，可以说是非常基础了，当然我会慢慢分享我的python学习之路，虽然现在依然很菜，但是起码我是充满信心的。</p>
+<hr>
+<p>未完待续。。。</p>
+<p>PS：最近跟大佬在一块做渗透，了解了好多小知识点，疯狂的被灌下毒鸡汤，在菜鸡的路上越走越远。。。</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/05/10/python的学习之路一/" class="b-link-green">python的学习之路一</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/05/10/sqlmap的使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Sqlmap">
+                        
+                        <span class="card-title">Sqlmap</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About Sqlmap
+
+About Sqlmap Security
+0x01 前言关于sqlmap，其实早就想写下总结个这哥是我接触安全认识的第一个神器，非常之叼。sqlmap是十分著名的自动化的SQL注入工具，他是开源的，由pytho</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/04/23/wireshark的使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="wireshark的使用">
+                        
+                        <span class="card-title">wireshark的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About wireshark
+
+About wireshark网上有很多关于wiresahrk的使用教程，我只针对我做过的CTF题目提出自己的见解。如有不足，请指出。
+
+一般来说，先打开流量包看一看，大致都有什么流量。然后再尝试导出或者直</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>

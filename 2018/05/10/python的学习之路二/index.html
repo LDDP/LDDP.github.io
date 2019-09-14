@@ -1,0 +1,892 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="python的学习之路二, wh1te">
+    <meta name="description" content="On the learning of Python
+
+python上篇介绍了python的基础变量以及基本语法，本篇继续介绍常见的操作，也非常的实用。
+0x01 基本规则Python语句中有一些基本规则和特殊字符：
+井号 # 表示之后的Py">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>python的学习之路二 | wh1te</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+</head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">wh1te</span>
+                    </a>
+                </div>
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>Index</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>Tags</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>Categories</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>Archives</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>About</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">wh1te</div>
+        <div class="logo-desc">
+            
+            不忘初心，方得始终
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                Categories
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                About
+            </a>
+        </li>
+        
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        python的学习之路二
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1,
+    #articleContent h2,
+    #articleContent h3,
+    #articleContent h4,
+    #articleContent h5,
+    #articleContent h6 {
+        padding-top: 76px;
+        margin-top: -76px;
+    }
+
+    #articleContent h1 {
+        line-height: 3.5rem;
+    }
+
+    #articleContent h2 {
+        line-height: 3.2rem;
+    }
+
+    #articleContent h3 {
+        line-height: 2.8rem;
+    }
+
+    #articleContent h4 {
+        line-height: 2.5rem;
+    }
+
+    #articleContent h5 {
+        line-height: 2.2rem;
+    }
+
+    #articleContent h6 {
+        line-height: 1.9rem;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+</style>
+<div class="row">
+    <div class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/python/" target="_blank">
+                    <span class="chip bg-color">python</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Learning-notes/" class="post-category" target="_blank">
+                        Learning notes
+                    </a>
+                    
+                </span>
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-05-10
+                </span>
+            </div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>On the learning of Python</p>
+<a id="more"></a>
+<h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><p>上篇介绍了python的基础变量以及基本语法，本篇继续介绍常见的操作，也非常的实用。</p>
+<h4 id="0x01-基本规则"><a href="#0x01-基本规则" class="headerlink" title="0x01 基本规则"></a>0x01 基本规则</h4><p>Python语句中有一些基本规则和特殊字符：</p>
+<pre><code>井号 # 表示之后的Python为注释
+换行 \n 是标准的行分隔符
+反斜线 \ 将继续上一行
+分号; 将两个语句连接在一行中  具体使用在同一行书写多个语句
+    例如：import sys; x = &#39;foo&#39;; sys.stdout.write(x + &#39;\n&#39;)
+冒号：将代码块的头和体分开
+语句（代码块）用缩进块的方式体现
+不同的缩进深度分隔不同的代码块
+Python文件以模块的形式组织
+python还支持多重赋值：x=y=z=1
+python支持：+= -= *= /= %= **= &gt;&gt;= &lt;&lt;= &amp;= ^= \=
+python多元赋值(x,y,z) = (1,2,&#39;a string&#39;)</code></pre><p>标识符：</p>
+<pre><code>标识符是计算机语言中允许作为名字的有效字符串集合。</code></pre><p>合法的Python标识符：</p>
+<pre><code>1.第一个字符必须是字母或者下划线
+2.剩下的字符可以字母数字或者下划线
+3.大小写比较敏感，就是区分大小写
+4.标识符不能以数字开头</code></pre><h4 id="0x02-这是一些书面道理，可以帮助你理解python"><a href="#0x02-这是一些书面道理，可以帮助你理解python" class="headerlink" title="0x02 这是一些书面道理，可以帮助你理解python"></a>0x02 这是一些书面道理，可以帮助你理解python</h4><p>Python对象</p>
+<pre><code>标准类型：
+    整型 int integer
+    布尔型 bool boolean
+    长整型 long integer
+    浮点型 float floating point real number
+    复数型 complex number
+    字符串 str string
+    列表 list
+    元组 tuple
+    字典 dict dictionary
+內建类型：
+    Null 对象（none）
+    文件
+    集合/固定集合
+    函数/方法
+    模块
+    类
+bool值为False的对象：
+    None
+    False
+    所有值为0的数
+    0(整型)
+    0.0(浮点型)
+    0L(长整型)
+    0.0+0.0j(复数)
+    &quot;&quot;(空字符串)
+    []空列表
+    ()空元组
+    {}空字典
+切片对象：
+    例如：
+        foolist = [&#39;123&#39;,&#39;xba&#39;,&#39;155.11&#39;,&#39;abc&#39;]
+        foolist[::-1]
+        结果为：
+        [&#39;abc&#39;,&#39;155.11&#39;,&#39;xba&#39;,&#39;123&#39;]</code></pre><p>标准类型操作符</p>
+<pre><code>对象值的比较：
+    数字类型根据数值的大小和符号比较，字符串按照字符序列值进行比较。
+    例如：
+        2 == 2
+        True
+        &#39;abc&#39; &lt; &#39;xyz&#39;
+        True
+        [&#39;3&#39;,&#39;abc&#39;] == [&#39;abc&#39;,&#39;3&#39;]
+        False
+对象身份比较：
+    foo1 = foo2 =4.3实质上是foo1、foo2同时指向了一个新建的数字对象4.3
+    foo1 = 4.3，foo2 = foo1 道理同上
+    foo1 = 4.3，foo2 = 1.0 + 3.3 实质上是foo1、跟foo2指向了两个不同的新建对象4.3
+    标准类型对象身份比较符：
+        操作符                    功能
+        obj1 is obj2            obj1 和 obj2 是同一个对象
+        obj1 is not obj2        obj1 和 obj2 不是同一个对象
+布尔类型：
+    操作符                        功能
+    not expr                    expr 的逻辑非（否）
+    expr and expr2              expr1 和 expr2的逻辑与
+    expr1 or expr2              expr1 和 expr2的逻辑或</code></pre><p>标准类型內建函数</p>
+<pre><code>标准类型內建函数：
+    函数                          功能
+    cmp(obj1,obj2)              比较obj1和obj2，根据比较结果返回整型i：
+                                i&lt;0 if obj1&lt;obj2
+                                i&gt;0 if obj1&gt;obj2
+                                i==0 if obj1 == obj2
+    repr(obj) 或&#39;obj&#39;           返回一个对象的字符串表示
+    str(obj)                    返回对象适合可读性好的字符串表示
+    type(obj)                   得到一个对象的类型，并返回相应的type对象
+type()
+    相当于php中的var_dump()
+    接受一个对象作为参数，并返回它的类型。它的返回值是一个类型对象。
+    type(123).__name__  可以直接返回数据的类型
+    &#39;int&#39;
+str() 和 repr()
+    內建函数str()和repr()或反引号操作符（``）可以方便的以字符串的方式获取对象的内容、
+        类型、数值等属性信息。
+    例如：
+        str(4.53-2j)
+        &#39;(4.53-2j)&#39;
+        repr([0,5,9,9])
+        &#39;[0,5,9,9]&#39;
+        `[0,5,9,9]`
+        &#39;[0,5,9,9]&#39;
+    三者基本没有差别，只是str返回的，用户可读性比较高，``和repr基本完全一样
+isinstance() 跟type()类似
+    例如：查看python  4.2.py
+          进阶版 查看python 4.1.py
+    减少函数的调用次数，可以尝试调用模块来进行。
+    （模块是啥？都有神马？可以自己创建模块吗？）</code></pre><p>Python类型操作符和內建函数总结</p>
+<pre><code>操作符/函数               描述                   结果
+                     字符串表示
+    ``                对象的字符串表示         str
+                     內建函数
+cmp(obj1,obj2)        比较两个对象             int
+repr(obj)             对象的字符串表示         str
+str(obj)              对象的字符串表示         str
+type(obj)             检测对象的类型           type
+                     值比较
+&lt;                     小于                     bool
+&gt;                     大于                     bool
+&lt;=                    小于或等于               bool
+&gt;=                    大于或等于               bool
+==                    等于                     bool
+!=                    不等于                   bool
+&lt;&gt;                    不等于                   bool
+                     对象比较
+is                    是                       bool
+is not                不是                     bool
+                     布尔操作符
+not                   逻辑反                   bool
+and                   逻辑与                   bool
+or                    逻辑或                   bool
+
+布尔比较总是返回True或者False</code></pre><p>类型工厂函数</p>
+<pre><code>內建函数：
+    int(),long(),flaot(),complex()
+    str(),unicode(),basestring()
+    list(),tuple()
+    type()
+工厂函数:
+    dict()
+    bool()
+    set(),frozenset()
+    object()
+    classmethod()
+    staticmethod()
+    super()
+    property()
+    file()
+以上分类其实都是工厂函数，工厂函数可以简单的理解为，Python自带的一些函数，方便你的使用</code></pre><p>标准类型的分类</p>
+<pre><code>存储模型：
+      分类                    python类型
+    标量/原子类型            数值(所有的数值类型),字符串(q全部是文字)
+    容器类型                 列表，元组，字典
+更新模型：
+    x = &#39;abc&#39;
+    x = &#39;123&#39;
+    i = 0
+    i = i+1
+    上述例子中，实质上并不是对象数据的更新(即：x从abc更新为123),而是旧的x被抛弃，
+        新建了一个x去存储数据。新对象取代了旧对象。可以通过id()查看 
+       分类                   Python类型
+     可变类型                 列表，字典
+     不可变类型               数字，字符串，元组
+访问模型:
+    直接存取：
+        对非容器类型可以直接访问。所有的数值类型都归到这一类。
+    顺序：
+        序列类型是指容器内的元素按从0开始的索引顺序访问，一次可以访问一个或多个元素。
+    映射：
+        映射类型类似于序列的索引属性，但是它是通过一个唯一的键来访问，它容纳的是
+            哈希键-值对的集合。
+                    以访问模型为标准的类型分类
+                            访问模型
+        分类                                    Python类型
+       直接访问                                 数字
+       顺序访问                                 字符串、列表、元组
+       映射访问                                 字典
+                           标准类型分类
+  数据类型        存储模型               更新模型            访问模型
+   数字             标量                 不可更改            直接访问
+   字符串           标量                 不可更改            顺序访问
+   列表             容器                 可更改              顺序访问
+   元组             容器                 不可更改            顺序访问
+    字典             容器                 可更改              映射访问</code></pre><p>不支持的类型</p>
+<pre><code>1.char或byte
+2.指针
+3.int vs short vs long
+4.float vs double   float在Python中一般就够用了 </code></pre><p>其实这些理论就是帮你理解一些细节部分，虽然目前我对python也是一知半解的水平都说不上，就我碰到过的一些错误，感觉这些还是有所帮助的。</p>
+<h4 id="0x03-小结"><a href="#0x03-小结" class="headerlink" title="0x03 小结"></a>0x03 小结</h4><p>之所以本篇没有放上脚本，是因为我很久都没写了，最近没时间，所以我就只能放点这些书面内容了，目前还是以更新技巧为主。最近这几天搞完，我就可以慢慢放上我学的时候写的一些程序，还是比较逗逼的。大家就把我这些当书去看吧~</p>
+<p>因为有人想学python，所以我就在写这些，虽然我也是个菜鸡，嘿嘿嘿~</p>
+
+            </div>
+            <hr/>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">Reprint please specify: </span>
+                    <a href="http://yoursite.com" class="b-link-green">wh1te</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/05/10/python的学习之路二/" class="b-link-green">python的学习之路二</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/05/10/masscan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="masscan的使用">
+                        
+                        <span class="card-title">masscan的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About masscan basic knowledge
+
+About masscan
+0x00 前言masscan的使用类似于nmap，其实也不用分开写，参数什么的也都差不多，只不过masscan比nmap更快一些，当扫描的ip数量比较</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/05/10/暴力破解工具的使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="暴力破解工具的的使用">
+                        
+                        <span class="card-title">暴力破解工具的的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">Use of violence cracking tools
+
+About Brute force
+0x00 前言暴力破解在很多地方都可以用到，比如burp就自带暴力破解的选项，很实用，但是在web以外的服务，比如爆破ftp密码，ssh密码</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    </div>
+    <div class="col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title">TOC</div>
+            <div id="toc-content">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+    });
+</script>
+    
+
+</main>
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由&copy;<a href="https://lddp.github.io/" target="_blank">wh1te</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 采用
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>的主题搭建.
+        </div>
+        <div class="col s12 m4 l4 social-link"><a href="https://github.com/lddp" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:1061722245@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1061722245" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script type="text/javascript" src="/js/love.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+</body>
+</html>
