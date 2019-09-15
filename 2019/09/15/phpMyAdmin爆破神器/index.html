@@ -5,11 +5,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="暴力破解工具的的使用, wh1te">
-    <meta name="description" content="Use of violence cracking tools
+    <meta name="keywords" content="phpMyAdmin爆破神器, wh1te">
+    <meta name="description" content="About TOOLS
 
-About Brute force
-0x00 前言暴力破解在很多地方都可以用到，比如burp就自带暴力破解的选项，很实用，但是在web以外的服务，比如爆破ftp密码，ssh密码">
+
+前言对phpmyadmin这个让人又爱又恨的东西，最近几次演习都有碰到，一般都是手试弱口令，有点low逼，也有写脚本完成的，最近发现了个好用的工具，phpmyadmin爆破器，亲测实际可靠。
+phpMyAdmin">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@ About Brute force
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>暴力破解工具的的使用 | wh1te</title>
+    <title>phpMyAdmin爆破神器 | wh1te</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -190,13 +191,13 @@ About Brute force
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        暴力破解工具的的使用
+                        phpMyAdmin爆破神器
                     </div>
                 </div>
             </div>
@@ -311,6 +312,10 @@ About Brute force
                     <span class="chip bg-color">Note</span>
                 </a>
                 
+                <a href="/tags/Tools/" target="_blank">
+                    <span class="chip bg-color">Tools</span>
+                </a>
+                
             </div>
             
             <div class="post-info">
@@ -318,52 +323,31 @@ About Brute force
                 <span class="post-cate">
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                     
-                    <a href="/categories/Skill/" class="post-category" target="_blank">
-                        Skill
+                    <a href="/categories/TOOLS/" class="post-category" target="_blank">
+                        TOOLS
                     </a>
                     
                 </span>
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-05-10
+                    <i class="fa fa-clock-o fa-fw"></i>2019-09-15
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Use of violence cracking tools</p>
+                <p>About TOOLS</p>
 <a id="more"></a>
-<h2 id="About-Brute-force"><a href="#About-Brute-force" class="headerlink" title="About Brute force"></a>About Brute force</h2><hr>
-<h4 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h4><p>暴力破解在很多地方都可以用到，比如burp就自带暴力破解的选项，很实用，但是在web以外的服务，比如爆破ftp密码，ssh密码等等，就不能使用了。所以，hydra以及medusa的使用了。</p>
-<p>暴力破解就是指，对不知道的账号密码(就是口令)进行猜测尝试，这种尝试很少是漫无目的的随意爆破，这样是没有意义的，往往是基于字典进行暴力猜解，而字典的生成，无非就是弱口令合集或者是那种姓名的拼音合集，是有依据的。这样不仅省了很多不必要的测试，还可以加大爆破成功的几率。</p>
-<h4 id="0x01-工具介绍"><a href="#0x01-工具介绍" class="headerlink" title="0x01 工具介绍"></a>0x01 工具介绍</h4><p>hydra是一款开源的密码破解工具，目前也有windows版本，我没下载过，一般是用kali自带的，方便简单。medusa也是一款暴力破解密码的神器，但是我发现用hydra的比medusa的多，其实从效率上来说，medusa比hydra要高。这两个爆破神器几乎支持所有的协议。</p>
-<h4 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h4><h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><p>-R 继续上次的破解（比如某次被迫中断）<br>-S 采用SSL链接<br>-s 指定非默认端口（比如ssh默认的端口是22，但是也会被改为是2222）<br>-l 指定用户名<br>-L 指定用户名字典<br>-p 指定密码<br>-P 指定密码字典<br>-e ns 可选选项，n跟s不一定同时使用，n表示使用空密码试探，s是指定用户和密码进行试探（个人不是很理解s）<br>-C 使用冒号分分割格式，例如”登录名:密码”来代替-P/-L参数<br>-M 这个就是一一对应，把你的用户名字典跟密码字典一行一行一一对应<br>-o 指定结果的输出文件<br>-f 在使用-M参数以后，找到第一对登录名或密码的时候中止破解（-f跟-M以后我找个实际例子，结合使用下瞅一瞅）<br>-t 设置线程，默认是16<br>-w 就是设置超时的时间，比如使用某个账号密码登陆，在一定时间内没有回应，就进行下一组爆破，节省时间，默认是30s<br>-v/V 显示详细过程</p>
-<p>server 目标ip<br>service 支持的服务</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>破解ssh：</p>
-<pre><code>hydra -L username.txt -P password.txt -t 20 -w 20 -o result.txt 10.10.10.10 ssh</code></pre><p>破解ftp：</p>
-<pre><code>hydra 10.10.10.10 ftp -L username.txt -P password.txt -t 20 -e ns -vV -o result.txt</code></pre><p>破解web：</p>
-<pre><code>get：hydra -L username.txt -P password.txt -t -vV e ns 10.10.10.10 http-from-get/admin/index.php</code></pre><pre><code>post: hydra -L username.txt -P password.txt -s 80 10.10.10.10 http-post-from&quot;/admin/login.php:username=^USER^&amp;password=^password^&amp;submit=login:sorry password serror&quot;
 
-hydra -L username.txt -P password.txt -o result.txt -s 80 10.10.10.10 http-post-from&quot;/admin/login.php:username=^USER^&amp;password=^PASS^:&lt;title&gt;wrong username or password&lt;/title&gt;&quot;</code></pre><p>get跟post我还没有实际进行尝试，之后再做修改吧。命令基本上都看懂了，post暴力破解的命令第二个：后面跟的就是登录不成功的返回信息了，可以自定义的。</p>
-<p>破解https：</p>
-<pre><code>hydra -m /index.php -l muts -P pass.txt 10.10.10.10 https</code></pre><p>这个也待测试。。。</p>
-<p>破解telnet：</p>
-<pre><code>hydra 10.10.10.10 telnet -l 用户 -P 密码字典 -t 32 -s 23 -e ns -f -V</code></pre><p>破解RDP（远程登陆3389）：</p>
-<pre><code>hydra 10.10.10.10 rdp -L username.txt -P password.txt -V</code></pre><p>其他的暂时没有用过，碰到了我再补充。</p>
-<h4 id="medusa"><a href="#medusa" class="headerlink" title="medusa"></a>medusa</h4><h5 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h5><p>-h 指定主机，就是ip<br>-H 主机列表<br>-u 用户名<br>-U 用户名列表<br>-p 密码<br>-P 密码列表<br>-C 组合条目文件（类似于hydra的-C）<br>-O 文件的日志信息<br>-e ns 类似于hydra，n为空密码，s意为账号和密码相同<br>-M 模块执行名称<br>-m 传递参数到模块<br>-d 显示所有的模块<br>-n 使用非默认的端口<br>-s 启用SSL<br>-r 重试间隔时间，默认3秒<br>-t 设置线程<br>-L 并行化，每个用户使用一个线程<br>-f 在人任何的主机上找到第一个账号/密码后，停止破解<br>-q 显示模块的使用信息<br>-v 0-6显示的详细级别<br>-w 0-10错误的调试级别<br>-V 显示版本<br>-Z 继续上次扫描   </p>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><p>查看可用模块：</p>
-<pre><code>medusa -d</code></pre><p>查看模块帮助：</p>
-<pre><code>medusa -M postgres -q</code></pre><p>破解ssh：</p>
-<pre><code>medusa -M ssh -h 10.10.10.10 -U username.txt -P password.txt -e ns -f</code></pre><p>破解mysql：</p>
-<pre><code>medusa -M mysql -h 10.10.10.10 -U username.txt -P password.txt -e ns -f</code></pre><p>破解telnet：</p>
-<pre><code>medusa -M telnet -h 10.10.10.10 -U username.txt -P password.txt -e ns -f</code></pre><p>其实使用的方式就是需要加个模块，然后跟参数都可以了。</p>
-<h4 id="0x02-小结"><a href="#0x02-小结" class="headerlink" title="0x02 小结"></a>0x02 小结</h4><p>其实这两种工具的具体效率，还是要看字典的内容，如果字典非常给力，那么工具的效率自然就可以提高。至于工具的使用，不同情况下搭配不同的参数就可以了，具体的使用，还是要在实践中学习。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对phpmyadmin这个让人又爱又恨的东西，最近几次演习都有碰到，一般都是手试弱口令，有点low逼，也有写脚本完成的，最近发现了个好用的工具，phpmyadmin爆破器，亲测实际可靠。</p>
+<h2 id="phpMyAdmin爆破器"><a href="#phpMyAdmin爆破器" class="headerlink" title="phpMyAdmin爆破器"></a>phpMyAdmin爆破器</h2><p>这个工具说白了也都是靠字典的，只不过它直接集成了一些可视化的功能，支持批量以及多线程，比较方便我这样的懒人去使用。</p>
+<p>上效果图：<br><img src="https://i.loli.net/2019/09/15/hLa89YsobZPAWzU.jpg" alt="image"><br>打开phpmyadmin爆破器以后，直接右键选择导入地址，就可以把需要爆破的地址导入进爆破器中。地址可以使用google语法或者钟馗之眼等信息搜集的网站去进行搜集，然后批量……，咳咳，点到即止。<br><img src="https://i.loli.net/2019/09/15/kxpaVl5C6gZSIev.jpg" alt="image"><br><img src="https://i.loli.net/2019/09/15/I6BozXHh2kVes8S.jpg" alt="image"></p>
+<p>导入成功以后，可以使用它自带的字典也可以自定义字典进行爆破。</p>
 <hr>
-<p>附带上两位大佬的博客：</p>
-<p><a href="https://www.cnblogs.com/Te7m/p/5938441.html" target="_blank" rel="noopener">实例演示之medusa密码破解</a></p>
-<p><a href="https://blog.csdn.net/yoursshun/article/details/54934142" target="_blank" rel="noopener">hydra—-密码爆破神器</a></p>
+<p>下载链接<a href="https://pan.baidu.com/s/199TUpcIyoJAoZj9MkAj8oA" target="_blank" rel="noopener">:phpMyAdmin  </a>提取码: uggf </p>
+<p>友情字典赞助：<a href="https://pan.baidu.com/s/1-HfWgM0j5nddym1YgUfukw" target="_blank" rel="noopener">链接</a>  提取码: 8k67 </p>
 
             </div>
             <hr/>
@@ -502,7 +486,7 @@ hydra -L username.txt -P password.txt -o result.txt -s 80 10.10.10.10 http-post-
                     <span class="reprint-tip">Reprint please specify: </span>
                     <a href="http://yoursite.com" class="b-link-green">wh1te</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/05/10/暴力破解工具的使用/" class="b-link-green">暴力破解工具的的使用</a>
+                    <a href="/2019/09/15/phpMyAdmin爆破神器/" class="b-link-green">phpMyAdmin爆破神器</a>
                 </p>
             </div>
         </div>
@@ -523,43 +507,50 @@ hydra -L username.txt -P password.txt -o result.txt -s 80 10.10.10.10 http-post-
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Previous</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
             <div class="card">
-                <a href="/2018/05/10/python的学习之路一/">
+                <a href="/2019/09/15/phpMyAdmin爆破神器/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="python的学习之路一">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="phpMyAdmin爆破神器">
                         
-                        <span class="card-title">python的学习之路一</span>
+                        <span class="card-title">phpMyAdmin爆破神器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">On the learning of Python
+                    <div class="summary">About TOOLS
 
-pythonpython是一门非常厉害的语言，关于它的介绍，就不多说了，只要掌握了基础的语法，剩下的就是逐渐认识python的一些库，python的厉害之处就是有很多各种各样的库，把这些</div>
+
+前言对phpmyadmin这个让人又爱又恨的东西，最近几次演习都有碰到，一般都是手试弱口令，有点low逼，也有写脚本完成的，最近发现了个好用的工具，phpmyadmin爆破器，亲测实际可靠。
+phpMyAdmin</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Learning-notes/" class="post-category" target="_blank">
-                                    Learning notes
+                            <a href="/categories/TOOLS/" class="post-category" target="_blank">
+                                    TOOLS
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/python/" target="_blank">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/Tools/" target="_blank">
+                        <span class="chip bg-color">Tools</span>
                     </a>
                     
                 </div>
@@ -571,24 +562,24 @@ pythonpython是一门非常厉害的语言，关于它的介绍，就不多说�
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">Next</div>
             <div class="card">
-                <a href="/2018/05/10/WEB-源码泄漏/">
+                <a href="/2019/09/15/一次奇妙的渗透/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="WEB安全-常见源码泄露">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="一次奇妙的渗透">
                         
-                        <span class="card-title">WEB安全-常见源码泄露</span>
+                        <span class="card-title">一次奇妙的渗透</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">About WEB Security
+                    <div class="summary">About 渗透
 
-About WEB Security
-0x0 前言关于WEB安全，这两天做题碰到了.git源码泄露的问题，刚好自己又记得不牢，所以写了个笔记，记录下关于常见的源码泄露。
-0x1 .git源码泄露当在一</div>
+
+前言最近应领导要求，开始疯狂搞站，然后大家各种骚操作齐出，因为我比较菜，就一直扫扫扫，然后就有了今天这个博客，想办法绕过它的防护措施。
+正文一开始，就是使用某扫描器扫出了Struts-045的洞，很开心，就去利用，然后</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
                             </span>
                         <span class="publish-author">
                             
@@ -609,8 +600,8 @@ About WEB Security
                         <span class="chip bg-color">Note</span>
                     </a>
                     
-                    <a href="/tags/WEB/" target="_blank">
-                        <span class="chip bg-color">WEB</span>
+                    <a href="/tags/渗透/" target="_blank">
+                        <span class="chip bg-color">渗透</span>
                     </a>
                     
                 </div>
